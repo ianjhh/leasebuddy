@@ -1,0 +1,50 @@
+# .gitignore
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+env/
+build/
+develop-eggs/
+dist/
+downloads/
+eggs/
+.eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+wheels/
+share/python-wheels/
+*.egg-info/
+.installed.cfg
+*.egg
+MANIFEST
+.env
+.venv
+venv/
+venv.bak/
+# Node
+node_modules/
+npm-debug.log
+yarn-error.log
+yarn-debug.log
+.pnpm-debug.log
+# Next.js
+.next/
+out/
+# Docker
+.docker/
+# OS Files
+.DS_Store
+Thumbs.db
+# IDEs
+.vscode/
+.idea/
+# Environment Variables - NEVER COMMIT SECRETS!
+.env
+.env.local
+.env.*.local
