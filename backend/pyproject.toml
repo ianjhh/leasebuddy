@@ -20,7 +20,8 @@ name = "leasebuddy-backend"
 version = "0.1.0"
 description = "FastAPI backend for leasebuddy — AI-powered lease document Q&A"
 authors = ["Your Name <you@example.com>"]
-readme = "README.md"
+package-mode = false
+# readme = "README.md"
 packages = [{include = "app"}]
 
 [tool.poetry.dependencies]
