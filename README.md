@@ -1,4 +1,4 @@
-# LeaseGPT
+# LeaseBuddy
 
 An AI-powered application that allows users to ask questions about their lease documents using RAG (Retrieval-Augmented Generation).
 
