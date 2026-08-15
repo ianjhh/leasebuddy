@@ -8,12 +8,12 @@ from app.api.dependencies import get_db
 router = APIRouter()
 
 @router.get("/")
-async def liveness_check():
+async def liveness_check() -> dict:
     """Liveness probe. Returns 200 if the server is running."""
     return {"status": "alive"}
 
 @router.get("/ready")
-async def readiness_check(session: AsyncSession = Depends(get_db)):
+async def readiness_check(session: AsyncSession = Depends(get_db)) -> dict:
     """Readiness probe. Checks if the database is reachable."""
     try:
         await session.execute(text("SELECT 1"))

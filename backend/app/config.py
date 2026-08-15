@@ -1,14 +1,18 @@
 # backend/app/config.py
 
 from pydantic_settings import BaseSettings, SettingsConfigDict
-from typing import Optional
+from typing import List
 
-# BaseSettings automatically reads from our .env file!
 class Settings(BaseSettings):
     # App Settings
     PROJECT_NAME: str = "LeaseGPT API"
     ENVIRONMENT: str = "development"
     API_SECRET_KEY: str = "change_me_in_prod"
+
+    # Server Settings
+    CORS_ORIGINS: List[str] = ["http://localhost:3000"]
+    MAX_UPLOAD_SIZE_BYTES: int = 20 * 1024 * 1024  # 20 MB
+    CACHE_TTL_SECONDS: int = 3600  # 1 hour
 
     # Database Settings
     DATABASE_URL: str
@@ -18,13 +22,8 @@ class Settings(BaseSettings):
     OLLAMA_BASE_URL: str = "http://localhost:11434"
     LLM_MODEL: str = "llama3.1:8b"
     EMBEDDING_MODEL: str = "nomic-embed-text"
-    
-    # We define the dimension of our vector based on the model we use.
-    # nomic-embed-text outputs a list of 768 numbers.
-    VECTOR_DIMENSION: int = 768
+    VECTOR_DIMENSION: int = 768  # nomic-embed-text outputs 768-dimensional vectors
 
-    # This tells Pydantic to look for a file named .env in the parent directory
     model_config = SettingsConfigDict(env_file="../.env", extra="ignore")
 
-# Create a global instance of settings to use throughout our app
 settings = Settings()

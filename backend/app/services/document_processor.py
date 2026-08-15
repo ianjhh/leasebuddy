@@ -1,7 +1,10 @@
 # backend/app/services/document_processor.py
 
+import logging
 import fitz  # PyMuPDF
 from typing import List, Dict
+
+logger = logging.getLogger(__name__)
 
 async def process_document(file_bytes: bytes, filename: str) -> List[Dict]:
     """
@@ -14,11 +17,11 @@ async def process_document(file_bytes: bytes, filename: str) -> List[Dict]:
     if extension in ["jpg", "jpeg", "png", "tiff"]:
         raise NotImplementedError(
             "Image OCR via AWS Textract is not yet configured. "
-            "Please upload a digitally-created PDF for now."
+            "Please upload a digitally-created PDF."
         )
 
     if extension == "pdf":
-        print("PDF detected. Analysing...")
+        logger.info("PDF detected. Analysing...")
         pdf_document = fitz.open(stream=file_bytes, filetype="pdf")
 
         first_page_text = pdf_document[0].get_text()
@@ -27,14 +30,14 @@ async def process_document(file_bytes: bytes, filename: str) -> List[Dict]:
             raise NotImplementedError(
                 "This PDF appears to be scanned (no digital text layer found). "
                 "AWS Textract OCR is not yet configured. "
-                "Please upload a digitally-created PDF for now."
+                "Please upload a digitally-created PDF."
             )
 
-        print(f"Digital PDF detected. Extracting text from {len(pdf_document)} pages...")
+        logger.info("Digital PDF detected. Extracting text from %d pages...", len(pdf_document))
         for page_num in range(len(pdf_document)):
             page = pdf_document[page_num]
             extracted_pages.append({
-                "page_num": page_num + 1,
+                "page_num": page_num + 1,  # 1-indexed so page numbers match the real document
                 "text": page.get_text(),
             })
 

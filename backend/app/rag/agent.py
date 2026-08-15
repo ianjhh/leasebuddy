@@ -1,7 +1,10 @@
 # backend/app/rag/agent.py
 
 import json
+import logging
 from typing import Optional, List, Dict, Any, AsyncGenerator
+
+logger = logging.getLogger(__name__)
 from uuid import UUID
 from pydantic import BaseModel, Field
 from langgraph.graph import StateGraph, END
@@ -46,7 +49,8 @@ async def analyze_query(state: QAState) -> QAState:
     try:
         analysis = json.loads(response.text)
         state.query_analysis = analysis
-    except:
+    except (json.JSONDecodeError, ValueError):
+        logger.warning("Failed to parse query analysis JSON, falling back to raw query.")
         state.query_analysis = {"keywords": [state.query]}
     return state
 
@@ -73,7 +77,8 @@ async def check_relevance(state: QAState) -> QAState:
     try:
         score = float(response.text.strip())
         state.relevance_score = score
-    except:
+    except (ValueError, TypeError):
+        logger.warning("Failed to parse relevance score, defaulting to 1.0.")
         state.relevance_score = 1.0
     return state
 
