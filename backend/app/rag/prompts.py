@@ -1,7 +1,8 @@
 # backend/app/rag/prompts.py
 
-from typing import List, Dict
+
 import httpx
+
 from app.config import settings
 
 QA_SYSTEM_PROMPT = """\
@@ -24,14 +25,14 @@ CONTEXT:
 """
 
 
-def build_context_string(retrieved_chunks: List[Dict]) -> str:
+def build_context_string(retrieved_chunks: list[dict]) -> str:
     """
     Formats retrieved database chunks into a single readable block of text
     that the LLM can easily parse.
     """
     lines = []
     for chunk in retrieved_chunks:
-        lines.append(f"---")
+        lines.append("---")
         lines.append(f"[Page {chunk['page']}]")
         lines.append(chunk['text'].strip())
     return "\n".join(lines)
@@ -64,7 +65,7 @@ async def ask_ollama(system_prompt: str, user_question: str) -> str:
 
 async def answer_question(
     user_question: str,
-    retrieved_chunks: List[Dict]
+    retrieved_chunks: list[dict]
 ) -> str:
     """
     High-level function that ties everything together:

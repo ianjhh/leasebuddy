@@ -1,0 +1,12 @@
+[
+  {
+    "question": "What is the monthly rent?",
+    "ground_truth": "The monthly rent is $2,500.",
+    "context": "The tenant agrees to pay a monthly rent of $2,500 due on the 1st of each month."
+  },
+  {
+    "question": "Are pets allowed?",
+    "ground_truth": "No, pets are strictly prohibited.",
+    "context": "Under no circumstances are animals or pets of any kind permitted on the premises."
+  }
+]

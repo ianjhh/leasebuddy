@@ -1,16 +1,17 @@
 # backend/app/config.py
 
+
 from pydantic_settings import BaseSettings, SettingsConfigDict
-from typing import List
+
 
 class Settings(BaseSettings):
     # App Settings
-    PROJECT_NAME: str = "LeaseGPT API"
+    PROJECT_NAME: str = "LeaseBuddy API"
     ENVIRONMENT: str = "development"
     API_SECRET_KEY: str = "change_me_in_prod"
 
     # Server Settings
-    CORS_ORIGINS: List[str] = ["http://localhost:3000"]
+    CORS_ORIGINS: list[str] = ["http://localhost:3000"]
     MAX_UPLOAD_SIZE_BYTES: int = 20 * 1024 * 1024  # 20 MB
     CACHE_TTL_SECONDS: int = 3600  # 1 hour
 

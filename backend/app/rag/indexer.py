@@ -2,12 +2,13 @@
 
 import logging
 import uuid
-from typing import List, Dict
-from sqlalchemy.ext.asyncio import AsyncSession
+
 from llama_index.core.node_parser import SentenceSplitter
 from llama_index.embeddings.ollama import OllamaEmbedding
-from app.models.lease import LeaseDocument, LeaseChunk
+from sqlalchemy.ext.asyncio import AsyncSession
+
 from app.config import settings
+from app.models.lease import LeaseChunk
 
 logger = logging.getLogger(__name__)
 
@@ -18,7 +19,7 @@ embedding_model = OllamaEmbedding(
 
 async def index_document(
     lease_id: str,
-    extracted_pages: List[Dict],
+    extracted_pages: list[dict],
     db: AsyncSession
 ) -> int:
     """
@@ -28,7 +29,7 @@ async def index_document(
     logger.info("Indexing lease %s...", lease_id)
 
     splitter = SentenceSplitter(chunk_size=512, chunk_overlap=50)
-    chunk_models: List[LeaseChunk] = []
+    chunk_models: list[LeaseChunk] = []
 
     for page in extracted_pages:
         page_num = page["page_num"]
@@ -40,7 +41,7 @@ async def index_document(
         text_chunks = splitter.split_text(text)
 
         for chunk_text in text_chunks:
-            embedding: List[float] = await embedding_model.aget_text_embedding(chunk_text)
+            embedding: list[float] = await embedding_model.aget_text_embedding(chunk_text)
 
             chunk = LeaseChunk(
                 id=uuid.uuid4(),

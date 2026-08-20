@@ -1,48 +1,71 @@
-# infra/docker/docker-compose.yml
-
 version: '3.8'
 
-# 'services' defines the different containers we want to run
 services:
-  
-  # 1. Our PostgreSQL Database
   postgres:
-    # We use a specific image that already has the pgvector extension installed!
-    image: pgvector/pgvector:pg16
-    container_name: leasebuddy-postgres
-    # These map to our .env variables
+    image: ankane/pgvector:v0.5.1
     environment:
       POSTGRES_USER: postgres
-      POSTGRES_PASSWORD: postgres
+      POSTGRES_PASSWORD: ${DB_PASSWORD:-postgres}
       POSTGRES_DB: leasebuddy
-    # We map port 5432 inside the container to 5432 on our Windows machine
     ports:
       - "5432:5432"
-    # Volumes save our data. If we don't do this, the database wipes clean every time we restart Docker!
     volumes:
-      - postgres_data:/var/lib/postgresql/data
-    # A healthcheck ensures the database is fully booted before other services try to connect
+      - pgdata:/var/lib/postgresql/data
     healthcheck:
-      test: ["CMD-SHELL", "pg_isready -U postgres -d leasebuddy"]
+      test: ["CMD-SHELL", "pg_isready -U postgres"]
       interval: 5s
       timeout: 5s
       retries: 5
 
-  # 2. Redis (Our fast in-memory cache)
   redis:
     image: redis:7-alpine
-    container_name: leasebuddy-redis
     ports:
       - "6379:6379"
-    volumes:
-      - redis_data:/data
-    healthcheck:
-      test: ["CMD", "redis-cli", "ping"]
-      interval: 5s
-      timeout: 5s
-      retries: 5
 
-# We must declare the volumes we used above 
+  ollama:
+    image: ollama/ollama:latest
+    ports:
+      - "11434:11434"
+    volumes:
+      - ollama_data:/root/.ollama
+
+  localstack:
+    image: localstack/localstack
+    ports:
+      - "4566:4566"
+    environment:
+      - SERVICES=s3,lambda,stepfunctions,iam
+      - DEBUG=1
+    volumes:
+      - "/var/run/docker.sock:/var/run/docker.sock"
+
+  backend:
+    build: 
+      context: ../../backend
+    ports:
+      - "8000:8000"
+    environment:
+      - DB_HOST=postgres
+      - DB_NAME=leasebuddy
+      - REDIS_HOST=redis
+      - OLLAMA_HOST=http://ollama:11434
+      - AWS_ENDPOINT_URL=http://localstack:4566
+    depends_on:
+      postgres:
+        condition: service_healthy
+      redis:
+        condition: service_started
+
+  frontend:
+    build:
+      context: ../../frontend
+    ports:
+      - "3000:3000"
+    environment:
+      - NEXT_PUBLIC_API_URL=http://localhost:8000/api
+    depends_on:
+      - backend
+
 volumes:
-  postgres_data:
-  redis_data:
+  pgdata:
+  ollama_data:

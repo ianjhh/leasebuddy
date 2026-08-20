@@ -2,18 +2,19 @@
 
 import json
 import logging
-from typing import Optional, List, Dict, Any, AsyncGenerator
+from typing import Any
 
 logger = logging.getLogger(__name__)
 from uuid import UUID
-from pydantic import BaseModel, Field
-from langgraph.graph import StateGraph, END
-from llama_index.core.llms import ChatMessage, MessageRole
-from llama_index.llms.ollama import Ollama
 
-from app.rag.retriever import hybrid_search
-from app.config import settings
+from langgraph.graph import END, StateGraph
+from llama_index.llms.ollama import Ollama
+from pydantic import BaseModel, Field
+
 from app.api.dependencies import get_db
+from app.config import settings
+from app.rag.retriever import hybrid_search
+
 
 class ChunkResult(BaseModel):
     id: str
@@ -28,13 +29,13 @@ class Citation(BaseModel):
 class QAState(BaseModel):
     lease_id: UUID
     query: str
-    query_analysis: Optional[Dict[str, Any]] = None
-    retrieved_chunks: List[ChunkResult] = Field(default_factory=list)
-    relevance_score: Optional[float] = None
-    answer: Optional[str] = None
-    citations: List[Citation] = Field(default_factory=list)
+    query_analysis: dict[str, Any] | None = None
+    retrieved_chunks: list[ChunkResult] = Field(default_factory=list)
+    relevance_score: float | None = None
+    answer: str | None = None
+    citations: list[Citation] = Field(default_factory=list)
     retry_count: int = 0
-    error: Optional[str] = None
+    error: str | None = None
 
 llm = Ollama(model=settings.LLM_MODEL, base_url=settings.OLLAMA_BASE_URL, request_timeout=120.0)
 

@@ -1,11 +1,14 @@
 import uuid
 from datetime import datetime
-from sqlalchemy import Column, String, DateTime, ForeignKey, JSON
-from sqlalchemy.dialects.postgresql import UUID, JSONB
-from sqlalchemy.orm import relationship
+
 from pgvector.sqlalchemy import Vector
-from app.models.base import Base
+from sqlalchemy import Column, DateTime, ForeignKey, String
+from sqlalchemy.dialects.postgresql import JSONB, UUID
+from sqlalchemy.orm import relationship
+
 from app.config import settings
+from app.models.base import Base
+
 
 class LeaseDocument(Base):
     """

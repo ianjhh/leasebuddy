@@ -2,14 +2,15 @@
 
 import logging
 import uuid
-from fastapi import APIRouter, File, UploadFile, HTTPException, Depends
+
+from fastapi import APIRouter, Depends, File, HTTPException, UploadFile
 from sqlalchemy.ext.asyncio import AsyncSession
-from typing import Dict
+
 from app.api.dependencies import get_db
-from app.models.lease import LeaseDocument
-from app.services.document_processor import process_document
-from app.rag.indexer import index_document
 from app.config import settings
+from app.models.lease import LeaseDocument
+from app.rag.indexer import index_document
+from app.services.document_processor import process_document
 
 logger = logging.getLogger(__name__)
 
@@ -21,7 +22,7 @@ ALLOWED_EXTENSIONS = {"pdf", "png", "jpg", "jpeg", "tiff"}
 async def upload_lease(
     file: UploadFile = File(...),
     db: AsyncSession = Depends(get_db)
-) -> Dict[str, str]:
+) -> dict[str, str]:
     """Upload a lease document. Validates, extracts text, chunks, embeds, and saves."""
     filename = file.filename or ""
     ext = filename.split(".")[-1].lower() if "." in filename else ""
@@ -67,7 +68,10 @@ async def upload_lease(
         lease.status = "failed"
         lease.metadata_ = {**lease.metadata_, "error": str(e)}
         await db.commit()
-        raise HTTPException(status_code=500, detail=f"Processing failed: {str(e)}")
+        # BEST PRACTICE: Never expose internal Python exception messages to the client in production!
+        # It can leak file paths, database schemas, or API keys. Log the error (done above), 
+        # but return a generic, safe message to the user.
+        raise HTTPException(status_code=500, detail="An internal server error occurred while processing the document.")
 
     return {
         "lease_id": str(lease.id),

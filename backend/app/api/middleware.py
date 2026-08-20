@@ -1,11 +1,13 @@
 # backend/app/api/middleware.py
 
-import time
 import logging
+import time
+
 import redis.asyncio as redis
 from fastapi import Request
 from starlette.middleware.base import BaseHTTPMiddleware
 from starlette.responses import JSONResponse, Response
+
 from app.config import settings
 
 logger = logging.getLogger(__name__)

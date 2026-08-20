@@ -1,10 +1,11 @@
 # backend/app/rag/retriever.py
 
+
+from llama_index.embeddings.ollama import OllamaEmbedding
 from sqlalchemy import text
 from sqlalchemy.ext.asyncio import AsyncSession
-from llama_index.embeddings.ollama import OllamaEmbedding
+
 from app.config import settings
-from typing import List, Dict
 
 embedding_model = OllamaEmbedding(
     model_name=settings.EMBEDDING_MODEL,
@@ -16,12 +17,12 @@ async def hybrid_search(
     lease_id: str,
     query_text: str,
     limit: int = 5
-) -> List[Dict]:
+) -> list[dict]:
     """
     Performs a hybrid search combining semantic (vector) and keyword (full-text) search,
     merged using Reciprocal Rank Fusion (RRF).
     """
-    query_embedding: List[float] = await embedding_model.aget_text_embedding(query_text)
+    query_embedding: list[float] = await embedding_model.aget_text_embedding(query_text)
     query_embedding_str = "[" + ",".join(str(x) for x in query_embedding) + "]"
     
     rrf_query = text("""

@@ -1,8 +1,9 @@
 # backend/app/api/routes/health.py
 
 from fastapi import APIRouter, Depends, HTTPException
-from sqlalchemy.ext.asyncio import AsyncSession
 from sqlalchemy import text
+from sqlalchemy.ext.asyncio import AsyncSession
+
 from app.api.dependencies import get_db
 
 router = APIRouter()
@@ -19,4 +20,4 @@ async def readiness_check(session: AsyncSession = Depends(get_db)) -> dict:
         await session.execute(text("SELECT 1"))
         return {"status": "ready", "database": "connected"}
     except Exception as e:
-        raise HTTPException(status_code=503, detail=f"Database unavailable: {str(e)}")
+        raise HTTPException(status_code=503, detail=f"Database unavailable: {e!s}")

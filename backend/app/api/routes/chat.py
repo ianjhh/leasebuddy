@@ -1,10 +1,11 @@
 # backend/app/api/routes/chat.py
 
-import logging
-import json
 import asyncio
-from fastapi import APIRouter, WebSocket, WebSocketDisconnect
+import json
+import logging
 from uuid import UUID
+
+from fastapi import APIRouter, WebSocket, WebSocketDisconnect
 
 from app.services.chat_service import generate_chat_response
 
@@ -46,9 +47,10 @@ async def websocket_chat(websocket: WebSocket, lease_id: UUID) -> None:
 
     except WebSocketDisconnect:
         logger.info("Client disconnected from lease %s", lease_id)
-    except Exception as e:
+    except Exception:
         logger.exception("WebSocket error for lease %s", lease_id)
+        # BEST PRACTICE: Do not leak the raw exception (str(e)) to the frontend over WebSockets.
         await websocket.send_json({
             "type": "error",
-            "message": str(e)
+            "message": "An internal error occurred. Please try again."
         })

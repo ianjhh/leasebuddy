@@ -1,12 +1,12 @@
 # backend/app/services/document_processor.py
 
 import logging
+
 import fitz  # PyMuPDF
-from typing import List, Dict
 
 logger = logging.getLogger(__name__)
 
-async def process_document(file_bytes: bytes, filename: str) -> List[Dict]:
+async def process_document(file_bytes: bytes, filename: str) -> list[dict]:
     """
     Takes a file, determines if it needs OCR, and extracts the text page by page.
     Returns a list of dicts, one per page: [{"page_num": 1, "text": "..."}, ...]

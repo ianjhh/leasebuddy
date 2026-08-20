@@ -1,17 +1,18 @@
 # backend/app/services/chat_service.py
 
-import json
 import hashlib
+import json
 import logging
-from typing import Dict, Any
+from typing import Any
 from uuid import UUID
-from app.api.dependencies import get_db, get_redis
-from app.rag.agent import run_agent
+
+from app.api.dependencies import get_redis
 from app.config import settings
+from app.rag.agent import run_agent
 
 logger = logging.getLogger(__name__)
 
-async def generate_chat_response(lease_id: UUID, query: str, session_id: str) -> Dict[str, Any]:
+async def generate_chat_response(lease_id: UUID, query: str, session_id: str) -> dict[str, Any]:
     """Manages the full lifecycle of a user asking a question."""
     query_hash = hashlib.md5(query.encode()).hexdigest()
     cache_key = f"chat_cache:{lease_id}:{query_hash}"

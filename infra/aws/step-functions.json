@@ -1,0 +1,43 @@
+{
+  "Comment": "LeaseBuddy Document Processing Pipeline",
+  "StartAt": "ClassifyDocument",
+  "States": {
+    "ClassifyDocument": {
+      "Type": "Task",
+      "Resource": "arn:aws:lambda:us-east-1:000000000000:function:classify-lambda",
+      "Next": "ProcessDocument",
+      "Catch": [
+        {
+          "ErrorEquals": ["States.ALL"],
+          "Next": "FailState"
+        }
+      ]
+    },
+    "ProcessDocument": {
+      "Type": "Task",
+      "Resource": "arn:aws:lambda:us-east-1:000000000000:function:extract-lambda",
+      "Next": "ChunkAndEmbed",
+      "Catch": [
+        {
+          "ErrorEquals": ["States.ALL"],
+          "Next": "FailState"
+        }
+      ]
+    },
+    "ChunkAndEmbed": {
+      "Type": "Task",
+      "Resource": "arn:aws:lambda:us-east-1:000000000000:function:chunk-embed-lambda",
+      "End": true,
+      "Catch": [
+        {
+          "ErrorEquals": ["States.ALL"],
+          "Next": "FailState"
+        }
+      ]
+    },
+    "FailState": {
+      "Type": "Fail",
+      "Cause": "Pipeline encountered an error."
+    }
+  }
+}

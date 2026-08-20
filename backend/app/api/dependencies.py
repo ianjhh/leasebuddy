@@ -1,10 +1,13 @@
 # backend/app/api/dependencies.py
 
-from typing import AsyncGenerator
-from sqlalchemy.ext.asyncio import AsyncSession
-from app.db.session import AsyncSessionLocal
-from app.config import settings
+from collections.abc import AsyncGenerator
+
 import redis.asyncio as redis
+from sqlalchemy.ext.asyncio import AsyncSession
+
+from app.config import settings
+from app.db.session import AsyncSessionLocal
+
 
 async def get_db() -> AsyncGenerator[AsyncSession, None]:
     """

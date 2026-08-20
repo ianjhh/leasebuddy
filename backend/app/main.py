@@ -2,16 +2,17 @@
 
 import logging
 from contextlib import asynccontextmanager
+
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
-from app.api.routes import health, upload, chat
-from app.api.middleware import RequestLoggingMiddleware
-from app.db.session import engine
-from app.models.base import Base
-from app.config import settings
 
 # Import all models so SQLAlchemy knows about them when we call create_all.
-import app.models.lease  # noqa: F401
+import app.models.lease
+from app.api.middleware import RequestLoggingMiddleware
+from app.api.routes import chat, health, upload
+from app.config import settings
+from app.db.session import engine
+from app.models.base import Base
 
 logger = logging.getLogger(__name__)
 
@@ -23,7 +24,7 @@ async def lifespan(app: FastAPI):
     Code after the 'yield' runs when the application SHUTS DOWN.
     """
     # ── Startup ──────────────────────────────────────────────────────────
-    logger.info("Starting up LeaseGPT backend...")
+    logger.info("Starting up LeaseBuddy backend...")
 
     async with engine.begin() as conn:
         await conn.run_sync(Base.metadata.create_all)
@@ -34,7 +35,7 @@ async def lifespan(app: FastAPI):
 
     # ── Shutdown ─────────────────────────────────────────────────────────
     await engine.dispose()
-    logger.info("Shutting down LeaseGPT backend... Connection pool closed.")
+    logger.info("Shutting down LeaseBuddy backend... Connection pool closed.")
 
 app = FastAPI(
     title=settings.PROJECT_NAME,
@@ -61,4 +62,4 @@ app.include_router(chat.router, tags=["Chat"])
 @app.get("/")
 async def root() -> dict:
     """A simple default route just to show the server is alive."""
-    return {"message": "Welcome to the LeaseGPT API!"}
+    return {"message": "Welcome to the LeaseBuddy API!"}

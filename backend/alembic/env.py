@@ -2,16 +2,17 @@
 
 import asyncio
 from logging.config import fileConfig
+
 from sqlalchemy import pool
 from sqlalchemy.engine import Connection
 from sqlalchemy.ext.asyncio import async_engine_from_config
+
+# IMPORTANT: You MUST import your models here so Alembic can see them!
 from alembic import context
 
 # Import our settings and base models
 from app.config import settings
 from app.models.base import Base
-# IMPORTANT: You MUST import your models here so Alembic can see them!
-import app.models.lease 
 
 config = context.config
 
