@@ -36,8 +36,13 @@ class QAState(BaseModel):
     citations: list[Citation] = Field(default_factory=list)
     retry_count: int = 0
     error: str | None = None
-
-llm = Ollama(model=settings.LLM_MODEL, base_url=settings.OLLAMA_BASE_URL, request_timeout=120.0)
+llm = Ollama(
+    model=settings.LLM_MODEL,
+    base_url=settings.OLLAMA_BASE_URL,
+    request_timeout=120.0,
+    context_window=4096,
+    additional_kwargs={"num_ctx": 4096}
+)
 
 async def analyze_query(state: QAState) -> QAState:
     prompt = f"""
