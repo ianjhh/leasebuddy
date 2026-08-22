@@ -4,6 +4,7 @@ import logging
 import uuid
 
 from fastapi import APIRouter, Depends, File, HTTPException, UploadFile
+from sqlalchemy import select
 from sqlalchemy.ext.asyncio import AsyncSession
 
 from app.api.dependencies import get_db
@@ -78,4 +79,31 @@ async def upload_lease(
         "message": "File uploaded and processed successfully.",
         "status": "completed",
         "chunks_created": str(chunk_count),
+    }
+
+
+@router.get("/{lease_id}")
+async def get_lease(
+    lease_id: str,
+    db: AsyncSession = Depends(get_db)
+) -> dict:
+    """Get the status of a lease document by ID."""
+    try:
+        lease_uuid = uuid.UUID(lease_id)
+    except ValueError:
+        raise HTTPException(status_code=400, detail="Invalid lease ID format.")
+
+    result = await db.execute(
+        select(LeaseDocument).where(LeaseDocument.id == lease_uuid)
+    )
+    lease = result.scalar_one_or_none()
+
+    if not lease:
+        raise HTTPException(status_code=404, detail="Lease not found.")
+
+    return {
+        "lease_id": str(lease.id),
+        "filename": lease.filename,
+        "status": lease.status,
+        "metadata": lease.metadata_,
     }
