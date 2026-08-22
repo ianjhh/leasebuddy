@@ -15,12 +15,17 @@ export default function ChatPage() {
   const router = useRouter();
   const leaseId = params.leaseId as string;
   
+  const [isMounted, setIsMounted] = useState(false);
   const [lease, setLease] = useState<Lease | null>(null);
   const [error, setError] = useState<string | null>(null);
 
   const { messages, isStreaming, sendQuery, connectionState } = useChat(leaseId);
   
   const messagesEndRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    setIsMounted(true);
+  }, []);
 
   useEffect(() => {
     async function loadLease() {
@@ -54,6 +59,8 @@ export default function ChatPage() {
       </div>
     );
   }
+
+  if (!isMounted) return null;
 
   return (
     <div className="flex flex-col h-screen overflow-hidden bg-background">
