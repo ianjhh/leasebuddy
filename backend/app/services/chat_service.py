@@ -6,7 +6,8 @@ import logging
 from typing import Any
 from uuid import UUID
 
-from app.api.dependencies import get_redis
+import redis.asyncio as redis
+
 from app.config import settings
 from app.rag.agent import run_agent
 
@@ -18,12 +19,14 @@ async def generate_chat_response(lease_id: UUID, query: str, session_id: str) ->
     cache_key = f"chat_cache:{lease_id}:{query_hash}"
 
     # Check cache
-    async for redis_client in get_redis():
+    redis_client = redis.from_url(settings.REDIS_URL)
+    try:
         cached_answer = await redis_client.get(cache_key)
         if cached_answer:
             logger.info("Cache hit for lease %s, query hash %s", lease_id, query_hash)
             return json.loads(cached_answer)
-        break
+    finally:
+        await redis_client.aclose()
 
     # Run the agent
     final_state = await run_agent(lease_id, query)
@@ -34,8 +37,10 @@ async def generate_chat_response(lease_id: UUID, query: str, session_id: str) ->
     }
 
     # Save to cache
-    async for redis_client in get_redis():
+    redis_client = redis.from_url(settings.REDIS_URL)
+    try:
         await redis_client.setex(cache_key, settings.CACHE_TTL_SECONDS, json.dumps(response_data))
-        break
+    finally:
+        await redis_client.aclose()
 
     return response_data
