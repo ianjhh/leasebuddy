@@ -7,8 +7,14 @@ WORKDIR /app
 
 RUN apt-get update && apt-get install -y gcc libpq-dev
 
-COPY requirements.txt .
+# Install Poetry and the export plugin
+RUN pip install poetry poetry-plugin-export
 
+# Copy poetry files
+COPY pyproject.toml poetry.lock ./
+
+# Export dependencies and install
+RUN poetry export -f requirements.txt --output requirements.txt --without-hashes
 RUN pip install --user -r requirements.txt
 
 # --- STAGE 2: Final Image (The clean plate) ---
