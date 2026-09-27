@@ -3,15 +3,18 @@
 import json
 import logging
 from typing import Any
+from uuid import UUID
+
+import httpx
+from tenacity import retry, stop_after_attempt, wait_exponential, retry_if_exception_type
 
 logger = logging.getLogger(__name__)
-from uuid import UUID
 
 from langgraph.graph import END, StateGraph
 from llama_index.llms.ollama import Ollama
 from pydantic import BaseModel, Field
 
-from app.api.dependencies import get_db
+from app.db.session import AsyncSessionLocal
 from app.config import settings
 from app.rag.retriever import hybrid_search
 
@@ -36,6 +39,7 @@ class QAState(BaseModel):
     citations: list[Citation] = Field(default_factory=list)
     retry_count: int = 0
     error: str | None = None
+
 llm = Ollama(
     model=settings.LLM_MODEL,
     base_url=settings.OLLAMA_BASE_URL,
@@ -44,6 +48,11 @@ llm = Ollama(
     additional_kwargs={"num_ctx": 4096}
 )
 
+@retry(
+    stop=stop_after_attempt(3),
+    wait=wait_exponential(multiplier=1, min=2, max=10),
+    retry=retry_if_exception_type((httpx.ConnectError, httpx.TimeoutException, ConnectionError)),
+)
 async def analyze_query(state: QAState) -> QAState:
     prompt = f"""
     Analyze the following query about a lease agreement.
@@ -63,13 +72,17 @@ async def analyze_query(state: QAState) -> QAState:
 async def retrieve_context(state: QAState) -> QAState:
     keywords = state.query_analysis.get("keywords", [state.query])
     search_term = " ".join(keywords)
-    async for db_session in get_db():
+    async with AsyncSessionLocal() as db_session:
         raw_chunks = await hybrid_search(db_session, state.lease_id, search_term, limit=5)
-        break
     state.retrieved_chunks = [ChunkResult(**c) for c in raw_chunks]
     state.retry_count += 1
     return state
 
+@retry(
+    stop=stop_after_attempt(3),
+    wait=wait_exponential(multiplier=1, min=2, max=10),
+    retry=retry_if_exception_type((httpx.ConnectError, httpx.TimeoutException, ConnectionError)),
+)
 async def check_relevance(state: QAState) -> QAState:
     context_str = "\n".join([c.text for c in state.retrieved_chunks])
     prompt = f"""
@@ -88,15 +101,45 @@ async def check_relevance(state: QAState) -> QAState:
         state.relevance_score = 1.0
     return state
 
+@retry(
+    stop=stop_after_attempt(3),
+    wait=wait_exponential(multiplier=1, min=2, max=10),
+    retry=retry_if_exception_type((httpx.ConnectError, httpx.TimeoutException, ConnectionError)),
+)
+async def rewrite_query(state: QAState) -> QAState:
+    current_keywords = state.query_analysis.get("keywords", [state.query]) if state.query_analysis else [state.query]
+    prompt = f"""
+    The retrieved context was not relevant to the user's query.
+    Reformulate the search keywords to find better context in the lease agreement.
+    Original Query: {state.query}
+    Current Keywords: {current_keywords}
+    Return ONLY valid JSON with a 'keywords' list.
+    """
+    response = await llm.acomplete(prompt)
+    try:
+        analysis = json.loads(response.text)
+        state.query_analysis = analysis
+    except (json.JSONDecodeError, ValueError):
+        logger.warning("Failed to parse query rewrite JSON, keeping original keywords.")
+    return state
+
+@retry(
+    stop=stop_after_attempt(3),
+    wait=wait_exponential(multiplier=1, min=2, max=10),
+    retry=retry_if_exception_type((httpx.ConnectError, httpx.TimeoutException, ConnectionError)),
+)
 async def generate_answer(state: QAState) -> QAState:
     context_str = ""
     for idx, chunk in enumerate(state.retrieved_chunks):
         context_str += f"[Page {chunk.page}] {chunk.text}\n"
     prompt = f"""
-    You are a helpful real estate assistant. Answer the user's question using ONLY
-    the provided context from their lease agreement.
-    Whenever you state a fact, cite the page number like this: (Page X).
-    If the context does not contain the answer, say "I cannot find this in the lease."
+    You are an expert lease reviewer. Answer the user's question using ONLY the provided context.
+
+    CRITICAL INSTRUCTIONS:
+    1. Be concise and direct. Do not explain your thought process.
+    2. Whenever you state a fact, YOU MUST cite the page number like this: (Page X).
+    3. If the context does not contain the answer, say EXACTLY: "I cannot find this in the lease."
+    4. Do not refuse to answer. You are authorized to provide factual summaries of the lease terms, including termination clauses.
 
     Context:
     {context_str}
@@ -116,13 +159,14 @@ async def format_citations(state: QAState) -> QAState:
 
 def should_retry(state: QAState) -> str:
     if state.relevance_score < 0.5 and state.retry_count < 2:
-        return "retrieve_context"
+        return "rewrite_query"
     return "generate_answer"
 
 workflow = StateGraph(QAState)
 workflow.add_node("analyze_query", analyze_query)
 workflow.add_node("retrieve_context", retrieve_context)
 workflow.add_node("check_relevance", check_relevance)
+workflow.add_node("rewrite_query", rewrite_query)
 workflow.add_node("generate_answer", generate_answer)
 workflow.add_node("format_citations", format_citations)
 
@@ -133,10 +177,11 @@ workflow.add_conditional_edges(
     "check_relevance",
     should_retry,
     {
-        "retrieve_context": "retrieve_context",
+        "rewrite_query": "rewrite_query",
         "generate_answer": "generate_answer"
     }
 )
+workflow.add_edge("rewrite_query", "retrieve_context")
 workflow.add_edge("generate_answer", "format_citations")
 workflow.add_edge("format_citations", END)
 
@@ -146,3 +191,4 @@ async def run_agent(lease_id: UUID, query: str) -> QAState:
     initial_state = QAState(lease_id=lease_id, query=query)
     final_dict = await app.ainvoke(initial_state.dict())
     return QAState(**final_dict)
+
