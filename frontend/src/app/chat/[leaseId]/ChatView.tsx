@@ -5,6 +5,7 @@ import { useParams, useRouter } from "next/navigation";
 import { ArrowLeft, FileText, AlertCircle } from "lucide-react";
 import { useChat } from "@/hooks/useChat";
 import { getLease } from "@/lib/api";
+import { DEMO_SUGGESTED, IS_DEMO } from "@/lib/demo";
 import { Lease } from "@/lib/types";
 import { MessageBubble } from "@/components/MessageBubble";
 import { ChatInput } from "@/components/ChatInput";
@@ -13,7 +14,7 @@ import { Button } from "@/components/ui/Button";
 // Nothing to subscribe to: the value only differs between server and client.
 const subscribeToNothing = () => () => {};
 
-export default function ChatPage() {
+export function ChatView() {
   const params = useParams(); 
   const router = useRouter();
   const leaseId = params.leaseId as string;
@@ -27,6 +28,7 @@ export default function ChatPage() {
   const { messages, isStreaming, isThinking, sendQuery, connectionState } = useChat(leaseId);
   
   const messagesEndRef = useRef<HTMLDivElement>(null);
+  const asked = new Set(messages.filter((m) => m.role === "user").map((m) => m.content));
 
   useEffect(() => {
     async function loadLease() {
@@ -87,7 +89,7 @@ export default function ChatPage() {
                 connectionState === "connecting" ? "bg-yellow-500 animate-pulse" : "bg-red-500"
               }`} />
               <span className="text-xs text-gray-400 uppercase tracking-wider">
-                {connectionState}
+                {IS_DEMO ? "demo · recorded answers" : connectionState}
               </span>
             </div>
           </div>
@@ -122,7 +124,21 @@ export default function ChatPage() {
 
       <div className="p-4 sm:p-6 bg-gradient-to-t from-background via-background to-transparent pt-10 z-10">
         <div className="max-w-3xl mx-auto">
-          <ChatInput 
+          {IS_DEMO && (
+            <div className="flex flex-wrap gap-2 pb-3 mb-1">
+              {DEMO_SUGGESTED.filter((q) => !asked.has(q)).map((q) => (
+                <button
+                  key={q}
+                  onClick={() => sendQuery(q)}
+                  disabled={isStreaming || isThinking}
+                  className="flex-shrink-0 px-3 py-1.5 rounded-full border border-white/10 bg-white/5 text-xs text-gray-300 transition-colors hover:bg-primary/20 hover:border-primary/40 hover:text-white disabled:opacity-40 disabled:cursor-not-allowed"
+                >
+                  {q}
+                </button>
+              ))}
+            </div>
+          )}
+          <ChatInput
             onSend={sendQuery} 
             disabled={isStreaming || isThinking || connectionState !== "connected"} 
           />

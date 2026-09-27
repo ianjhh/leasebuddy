@@ -1,21 +1,28 @@
 import { useState, useCallback, useEffect } from "react";
 import { ChatMessage } from "@/lib/types";
+import { DEMO_LEASE, IS_DEMO } from "@/lib/demo";
 import { useWebSocket } from "./useWebSocket";
+import { useDemoSocket } from "./useDemoSocket";
 
 // Only called from event handlers, never during render.
 const generateId = () => Math.random().toString(36).substring(2, 9);
+
+// Fixed at build time, so the same hook runs on every render.
+const useSocket = IS_DEMO ? useDemoSocket : useWebSocket;
 
 export function useChat(leaseId: string | null) {
   const [messages, setMessages] = useState<ChatMessage[]>(() => [{
     id: "greeting",
     role: "assistant",
-    content: "Hi there! 👋 Ask me anything about the document you just uploaded!",
+    content: IS_DEMO
+      ? `Hi there! 👋 This is a sample ${DEMO_LEASE.pageCount}-page lease. Pick a question below to see how I answer, with the page I found it on.`
+      : "Hi there! 👋 Ask me anything about the document you just uploaded!",
     createdAt: new Date().toISOString(),
   }]);
   const [isStreaming, setIsStreaming] = useState(false);
   const [isThinking, setIsThinking] = useState(false);
   
-  const { connectionState, sendMessage, onMessage } = useWebSocket(leaseId);
+  const { connectionState, sendMessage, onMessage } = useSocket(leaseId);
 
   useEffect(() => {
     onMessage((msg) => {
@@ -54,7 +61,14 @@ export function useChat(leaseId: string | null) {
           };
           return [...prev.slice(0, -1), updatedMsg];
         });
-      } 
+      }
+      else if (msg.type === "note") {
+        setMessages((prev) => {
+          const lastMsg = prev[prev.length - 1];
+          if (!lastMsg || lastMsg.role !== "assistant") return prev;
+          return [...prev.slice(0, -1), { ...lastMsg, note: msg.content }];
+        });
+      }
       else if (msg.type === "done") {
         setIsStreaming(false);
         setIsThinking(false);

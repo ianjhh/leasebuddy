@@ -5,7 +5,9 @@ import { useRouter } from "next/navigation";
 import { Sparkles, FileText, Search } from "lucide-react";
 import { FileUpload } from "@/components/FileUpload";
 import { ProcessingStatus } from "@/components/ProcessingStatus";
+import { DemoLeaseCard } from "@/components/DemoLeaseCard";
 import { useLeaseUpload } from "@/hooks/useLeaseUpload";
+import { DEMO_LEASE, IS_DEMO } from "@/lib/demo";
 
 export default function Home() {
   const router = useRouter(); 
@@ -38,7 +40,9 @@ export default function Home() {
       </div>
 
       <div className="w-full max-w-3xl mx-auto animate-fade-in" style={{ animationDelay: "200ms" }}>
-        {status === "idle" || status === "error" || status === "uploading" ? (
+        {IS_DEMO ? (
+          <DemoLeaseCard onOpen={() => router.push(`/chat/${DEMO_LEASE.id}`)} />
+        ) : status === "idle" || status === "error" || status === "uploading" ? (
           <FileUpload onUpload={uploadFile} isLoading={status === "uploading"} />
         ) : (
           <ProcessingStatus status={status} progress={progress} />
