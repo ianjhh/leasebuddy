@@ -72,5 +72,7 @@ jobs:
       - name: Lint
         run: cd frontend && bun run lint
         
+      # Next.js generates route types (e.g. LayoutProps) and next-env.d.ts into
+      # gitignored files, so a fresh checkout must generate them first.
       - name: Type check
-        run: cd frontend && bun x tsc --noEmit
+        run: cd frontend && bun x next typegen && bun x tsc --noEmit
