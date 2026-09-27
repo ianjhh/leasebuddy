@@ -11,6 +11,8 @@
 ![LangGraph](https://img.shields.io/badge/LangGraph-agent-1C3C3C)
 ![AWS](https://img.shields.io/badge/AWS-Lambda%20%7C%20Step%20Functions-FF9900?logo=amazonwebservices&logoColor=white)
 
+**[Try the demo](https://ian-joseph.netlify.app/leasebuddy/)**
+
 </div>
 
 ## About
@@ -132,6 +134,17 @@ bun dev
 ```
 
 Then open [http://localhost:3000](http://localhost:3000). The API documentation is at [http://localhost:8000/docs](http://localhost:8000/docs).
+
+### Demo build
+
+The [hosted demo](https://ian-joseph.netlify.app/leasebuddy/) is a static build of the frontend with no backend. It opens a synthetic sample lease and replays answers the real agent gave during the end-to-end evaluation, with their citations, latency and retrieval passes. The models run locally through Ollama, so free hosting can't serve them live.
+
+```bash
+cd backend
+poetry run python -m evals.export_demo   # recorded answers -> frontend/src/lib/demo-data.json
+cd ../frontend
+bun run build:demo                       # static site in frontend/out, served from /leasebuddy
+```
 
 ### Useful commands
 
