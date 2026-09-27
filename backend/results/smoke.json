@@ -1,0 +1,109 @@
+[
+  {
+    "question": "How much is the returned check fee, not the late fee?",
+    "answer_keys": [
+      "$25.00"
+    ],
+    "gold_page": 3,
+    "gold_section": "4.3",
+    "category": "adversarial",
+    "lease_index": 0,
+    "gold_pages": [
+      3
+    ],
+    "gold_clauses": [
+      "4.3 Returned Payments: Any payment returned for insufficient funds shall incur a separate service charge of $25.00, which is distinct from and in addition to any late charge assessed under Section 4.1."
+    ],
+    "gold_clause": "4.3 Returned Payments: Any payment returned for insufficient funds shall incur a separate service charge of $25.00, which is distinct from and in addition to any late charge assessed under Section 4.1.",
+    "answer": "$25.00 (Page 3, Section 4.3).",
+    "latency_s": 9.88,
+    "retry_count": 0,
+    "retrieved_pages": [
+      3
+    ],
+    "correct": true,
+    "refused": false,
+    "false_refusal": false,
+    "citation_correct": true
+  },
+  {
+    "question": "What is the monthly base rent?",
+    "answer_keys": [
+      "$2,600.00"
+    ],
+    "gold_page": 2,
+    "gold_section": "3.1",
+    "category": "lookup",
+    "lease_index": 0,
+    "gold_pages": [
+      2
+    ],
+    "gold_clauses": [
+      "3.1 Monthly Rent: Tenant agrees to pay Landlord the sum of $2,600.00 per month as base rent, payable in advance on or before the first (1st) day of each calendar month."
+    ],
+    "gold_clause": "3.1 Monthly Rent: Tenant agrees to pay Landlord the sum of $2,600.00 per month as base rent, payable in advance on or before the first (1st) day of each calendar month.",
+    "answer": "$2,600.00 (Page 2).",
+    "latency_s": 8.85,
+    "retry_count": 0,
+    "retrieved_pages": [
+      2
+    ],
+    "correct": true,
+    "refused": false,
+    "false_refusal": false,
+    "citation_correct": true
+  },
+  {
+    "question": "If I pay rent on the 10th of the month, how much do I owe in total?",
+    "answer_keys": [
+      "$2,675.00"
+    ],
+    "gold_page": 2,
+    "gold_section": "3.1+4.1",
+    "category": "multi_hop",
+    "lease_index": 0,
+    "gold_pages": [
+      2,
+      3
+    ],
+    "gold_clauses": [
+      "3.1 Monthly Rent: Tenant agrees to pay Landlord the sum of $2,600.00 per month as base rent, payable in advance on or before the first (1st) day of each calendar month.",
+      "4.1 Grace Period: Rent received after the 7th day of the month shall be considered late and shall incur a one-time late charge of $75.00."
+    ],
+    "gold_clause": "3.1 Monthly Rent: Tenant agrees to pay Landlord the sum of $2,600.00 per month as base rent, payable in advance on or before the first (1st) day of each calendar month.",
+    "answer": "Since the Commencement Date is not specified, I will assume the standard scenario. According to Section 3.3 (Page 2), if the first month's rent falls after the 1st day of the month, it shall be prorated. Therefore, if you pay on the 10th, you will owe:\n\n* Prorated rent for the first 9 days of the month: 9 days x $2,600.00 / 30 days = $780.00\n* Full rent for the remaining 21 days of the month: $2,600.00\n* Total: $780.00 + $2,600.00 = $3,380.00",
+    "latency_s": 3.71,
+    "retry_count": 0,
+    "retrieved_pages": [
+      2,
+      3
+    ],
+    "correct": false,
+    "refused": false,
+    "false_refusal": false,
+    "citation_correct": true
+  },
+  {
+    "question": "What is the landlord's mobile phone number?",
+    "answer_keys": [
+      "cannot find"
+    ],
+    "gold_page": -1,
+    "gold_section": "none",
+    "category": "unanswerable",
+    "lease_index": 0,
+    "gold_pages": [],
+    "gold_clauses": [],
+    "gold_clause": "",
+    "answer": "I cannot find this in the lease.",
+    "latency_s": 3.54,
+    "retry_count": 0,
+    "retrieved_pages": [
+      1
+    ],
+    "correct": true,
+    "refused": true,
+    "false_refusal": false,
+    "citation_correct": null
+  }
+]

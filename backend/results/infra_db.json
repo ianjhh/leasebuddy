@@ -1,0 +1,44 @@
+[
+  {
+    "check": "vector_dimension",
+    "claim": "768-dim embeddings",
+    "observed": "768-dim",
+    "passed": true
+  },
+  {
+    "check": "hnsw_index",
+    "claim": "HNSW index, m=16, ef_construction=64, cosine",
+    "observed": "no HNSW index found on lease_chunks",
+    "passed": false
+  },
+  {
+    "check": "corpus_indexed",
+    "claim": "corpus is present for retrieval",
+    "observed": "6 documents, 109 chunks",
+    "passed": true
+  },
+  {
+    "check": "rrf_k",
+    "claim": "Reciprocal Rank Fusion k=60",
+    "observed": "k values in shipped SQL: ['60']",
+    "passed": true
+  },
+  {
+    "check": "candidate_pool",
+    "claim": "50 candidates narrowed to top 5",
+    "observed": "5 x 10 = 50 candidates -> top 5",
+    "passed": true
+  },
+  {
+    "check": "cache_ttl",
+    "claim": "1-hour response cache TTL",
+    "observed": "CACHE_TTL_SECONDS=3600",
+    "passed": true
+  },
+  {
+    "check": "cache_wired",
+    "claim": "response cache is on the request path",
+    "observed": "callers of generate_chat_response: none",
+    "passed": false
+  }
+]

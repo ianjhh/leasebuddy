@@ -1,12 +1,52 @@
 [
   {
-    "question": "What is the monthly rent?",
-    "ground_truth": "The monthly rent is $2,500.",
-    "context": "The tenant agrees to pay a monthly rent of $2,500 due on the 1st of each month."
+    "question": "What is the monthly rent and when is it due?",
+    "ground_truth": "The monthly rent is $1,850.00 USD, due on the 1st of each calendar month.",
+    "context": "Monthly Rent:\n $1,850.00 USD\n Due Date:\n 1st of each calendar month\n 3.1 Monthly Rent: Tenant agrees to pay Landlord the monthly sum of $1,850.00 USD, payable in advance on or before the first (1st) day of each calendar month during the term."
+  },
+  {
+    "question": "How much is the security deposit?",
+    "ground_truth": "The security deposit is $1,850.00 USD.",
+    "context": "Security Deposit:\n $1,850.00 USD"
+  },
+  {
+    "question": "When does the lease expire and what happens then?",
+    "ground_truth": "The lease expires on September 30, 2027 at 11:59 PM. It automatically converts to a month-to-month tenancy unless a 30-day notice is given.",
+    "context": "Lease Expiration:\n September 30, 2027\n 2. TERM OF LEASE\n The term of this Lease shall commence on October 1, 2026 (\"Commencement Date\") and shall expire on September 30, 2027 at 11:59 PM. Upon expiration, this Agreement shall automatically convert to a month-to-month tenancy under the same terms and conditions, unless either party provides a written thirty (30) day notice of non-renewal."
+  },
+  {
+    "question": "Is there a penalty if I pay rent on the 6th of the month?",
+    "ground_truth": "Yes, there is a $50.00 late fee starting on the 5th of the month.",
+    "context": "Late Fee Threshold:\n 5th of the month ($50.00 fee)"
+  },
+  {
+    "question": "Can my friend stay with me for a month?",
+    "ground_truth": "Not without written authorization, as guests staying longer than 14 consecutive days require it.",
+    "context": "6.1 Occupancy: The Premises shall be occupied exclusively by the designated Tenant as a private single-family residence. No other persons shall reside in the Premises without Landlord's prior written consent. Guests staying longer than fourteen (14) consecutive calendar days require written authorization from Landlord."
   },
   {
     "question": "Are pets allowed?",
-    "ground_truth": "No, pets are strictly prohibited.",
-    "context": "Under no circumstances are animals or pets of any kind permitted on the premises."
+    "ground_truth": "No pets are permitted without a separate signed Pet Addendum and payment of a pet fee, except as required by fair housing laws.",
+    "context": "6.2 Pets: No animals, pets, or livestock are permitted on the Premises without a separate signed Pet Addendum and payment of any applicable non-refundable pet fee or deposit, except as required by applicable fair housing laws."
+  },
+  {
+    "question": "Can I paint the walls in my apartment?",
+    "ground_truth": "No, you cannot paint without the Landlord's express prior written consent.",
+    "context": "7.2 Alterations: Tenant shall not paint, redecorate, install fixtures, or make structural alterations to the Premises without Landlord's express prior written consent."
+  },
+  {
+    "question": "Does the landlord pay for the internet?",
+    "ground_truth": "No, internet is the Tenant's responsibility.",
+    "context": "Tenant's Responsibility: Electricity, natural gas, internet, cable television, and telephone services. Tenant shall promptly transfer utility accounts into Tenant's name as of the Commencement Date."
+  },
+  {
+    "question": "Can the landlord enter the apartment unannounced?",
+    "ground_truth": "Generally no, they must provide at least 24 hours advance notice, except in emergency situations involving imminent hazard.",
+    "context": "8. RIGHT OF ENTRY & INSPECTION\n Landlord and Landlord's authorized agents shall have the right to enter the Premises for inspection, repairs, alterations, or showing the property to prospective purchasers or tenants. Except in emergency situations involving imminent hazard to person or property, Landlord shall provide Tenant with at least twenty-four (24) hours advance notice."
+  },
+  {
+    "question": "What happens if I break a rule in the lease?",
+    "ground_truth": "It constitutes a default, and the Landlord may issue a notice to cure or vacate.",
+    "context": "9. DEFAULT & GOVERNING LAW\n Failure by Tenant to comply with any material provision of this Agreement shall constitute a default. Upon default, Landlord may issue appropriate notice pursuant to state statutory guidelines to cure or vacate."
   }
 ]

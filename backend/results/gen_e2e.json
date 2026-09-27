@@ -1,0 +1,1899 @@
+[
+  {
+    "question": "How much is the returned check fee, not the late fee?",
+    "answer_keys": [
+      "$25.00"
+    ],
+    "gold_page": 3,
+    "gold_section": "4.3",
+    "category": "adversarial",
+    "lease_index": 0,
+    "gold_pages": [
+      3
+    ],
+    "gold_clauses": [
+      "4.3 Returned Payments: Any payment returned for insufficient funds shall incur a separate service charge of $25.00, which is distinct from and in addition to any late charge assessed under Section 4.1."
+    ],
+    "gold_clause": "4.3 Returned Payments: Any payment returned for insufficient funds shall incur a separate service charge of $25.00, which is distinct from and in addition to any late charge assessed under Section 4.1.",
+    "answer": "$25.00 (Page 3)",
+    "latency_s": 70.21,
+    "retry_count": 2,
+    "relevance_score": 0.45,
+    "retrieved_pages": [
+      3,
+      4,
+      15,
+      12,
+      7
+    ],
+    "correct": true,
+    "refused": false,
+    "false_refusal": false,
+    "citation_correct": true
+  },
+  {
+    "question": "What is the monthly pet rent, as opposed to the pet deposit?",
+    "answer_keys": [
+      "$35.00"
+    ],
+    "gold_page": 7,
+    "gold_section": "8.3",
+    "category": "adversarial",
+    "lease_index": 0,
+    "gold_pages": [
+      7
+    ],
+    "gold_clauses": [
+      "8.3 Pet Rent: In addition to the pet deposit, monthly pet rent of $35.00 per approved animal shall be added to the base rent and is due with each rent payment."
+    ],
+    "gold_clause": "8.3 Pet Rent: In addition to the pet deposit, monthly pet rent of $35.00 per approved animal shall be added to the base rent and is due with each rent payment.",
+    "answer": "$35.00 per approved animal (Page 7, Section 8.3).",
+    "latency_s": 44.65,
+    "retry_count": 1,
+    "relevance_score": 0.95,
+    "retrieved_pages": [
+      7,
+      4,
+      2,
+      3,
+      14
+    ],
+    "correct": true,
+    "refused": false,
+    "false_refusal": false,
+    "citation_correct": true
+  },
+  {
+    "question": "Besides the one-time late charge, what is the additional daily charge for unpaid rent?",
+    "answer_keys": [
+      "$5.00"
+    ],
+    "gold_page": 3,
+    "gold_section": "4.2",
+    "category": "adversarial",
+    "lease_index": 0,
+    "gold_pages": [
+      3
+    ],
+    "gold_clauses": [
+      "4.2 Additional Daily Charge: In addition to the late charge in Section 4.1, an additional $5.00 per day shall accrue for each day rent remains unpaid after the 7th day."
+    ],
+    "gold_clause": "4.2 Additional Daily Charge: In addition to the late charge in Section 4.1, an additional $5.00 per day shall accrue for each day rent remains unpaid after the 7th day.",
+    "answer": "An additional $5.00 per day shall accrue for each day rent remains unpaid after the 7th day (Page 3, Section 4.2).",
+    "latency_s": 36.79,
+    "retry_count": 1,
+    "relevance_score": 0.55,
+    "retrieved_pages": [
+      3,
+      15,
+      2,
+      11,
+      12
+    ],
+    "correct": true,
+    "refused": false,
+    "false_refusal": false,
+    "citation_correct": true
+  },
+  {
+    "question": "Can I list the apartment on Airbnb?",
+    "answer_keys": [
+      "No",
+      "no",
+      "not"
+    ],
+    "gold_page": 10,
+    "gold_section": "12.1",
+    "category": "adversarial",
+    "lease_index": 0,
+    "gold_pages": [
+      10
+    ],
+    "gold_clauses": [
+      "12.1 Tenant shall not assign this Agreement, sublet the Premises in whole or in part, or list the Premises on any short-term rental platform without Landlord's prior written consent."
+    ],
+    "gold_clause": "12.1 Tenant shall not assign this Agreement, sublet the Premises in whole or in part, or list the Premises on any short-term rental platform without Landlord's prior written consent.",
+    "answer": "I cannot find this in the lease.",
+    "latency_s": 66.82,
+    "retry_count": 2,
+    "relevance_score": 0.7,
+    "retrieved_pages": [
+      1,
+      10,
+      12,
+      14,
+      15
+    ],
+    "correct": false,
+    "refused": true,
+    "false_refusal": true,
+    "citation_correct": false
+  },
+  {
+    "question": "Do I have to pay a pet deposit for a service animal?",
+    "answer_keys": [
+      "No",
+      "exempt",
+      "not"
+    ],
+    "gold_page": 7,
+    "gold_section": "8.4",
+    "category": "adversarial",
+    "lease_index": 0,
+    "gold_pages": [
+      7
+    ],
+    "gold_clauses": [
+      "8.4 Restrictions: No individual animal may exceed 35 pounds at maturity. Service animals and assistance animals required by applicable fair housing law are exempt from the deposit, pet rent, and weight restrictions in this Section."
+    ],
+    "gold_clause": "8.4 Restrictions: No individual animal may exceed 35 pounds at maturity. Service animals and assistance animals required by applicable fair housing law are exempt from the deposit, pet rent, and weight restrictions in this Section.",
+    "answer": "No, you are exempt from paying a pet deposit and pet rent for a service animal, as per Section 8.4: \"Service animals and assistance animals required by applicable fair housing law are exempt from the deposit, pet rent, and weight restrictions in this Section.\" (Page 7)",
+    "latency_s": 40.94,
+    "retry_count": 1,
+    "relevance_score": 0.6,
+    "retrieved_pages": [
+      7,
+      4,
+      3,
+      14,
+      15
+    ],
+    "correct": true,
+    "refused": false,
+    "false_refusal": false,
+    "citation_correct": true
+  },
+  {
+    "question": "Can I use the security deposit to pay my last month of rent?",
+    "answer_keys": [
+      "No",
+      "not",
+      "shall not"
+    ],
+    "gold_page": 4,
+    "gold_section": "5.2",
+    "category": "adversarial",
+    "lease_index": 0,
+    "gold_pages": [
+      4
+    ],
+    "gold_clauses": [
+      "5.2 The security deposit shall not be applied by Tenant as payment of the last month's rent or any other rent obligation during the term."
+    ],
+    "gold_clause": "5.2 The security deposit shall not be applied by Tenant as payment of the last month's rent or any other rent obligation during the term.",
+    "answer": "I cannot find this in the lease.",
+    "latency_s": 38.68,
+    "retry_count": 1,
+    "relevance_score": 0.5,
+    "retrieved_pages": [
+      4,
+      3,
+      12,
+      11,
+      2
+    ],
+    "correct": false,
+    "refused": true,
+    "false_refusal": true,
+    "citation_correct": false
+  },
+  {
+    "question": "Can I change the locks myself?",
+    "answer_keys": [
+      "No",
+      "not",
+      "consent"
+    ],
+    "gold_page": 9,
+    "gold_section": "10.1",
+    "category": "adversarial",
+    "lease_index": 0,
+    "gold_pages": [
+      9
+    ],
+    "gold_clauses": [
+      "10.1 Tenant shall not paint, wallpaper, install fixtures, change locks, or make any structural alteration to the Premises without Landlord's express prior written consent."
+    ],
+    "gold_clause": "10.1 Tenant shall not paint, wallpaper, install fixtures, change locks, or make any structural alteration to the Premises without Landlord's express prior written consent.",
+    "answer": "I cannot find this in the lease.",
+    "latency_s": 28.32,
+    "retry_count": 1,
+    "relevance_score": 0.9,
+    "retrieved_pages": [
+      9,
+      15,
+      8,
+      1,
+      10
+    ],
+    "correct": false,
+    "refused": true,
+    "false_refusal": true,
+    "citation_correct": false
+  },
+  {
+    "question": "How much is the returned check fee, not the late fee?",
+    "answer_keys": [
+      "$60.00"
+    ],
+    "gold_page": 3,
+    "gold_section": "4.3",
+    "category": "adversarial",
+    "lease_index": 1,
+    "gold_pages": [
+      3
+    ],
+    "gold_clauses": [
+      "4.3 Returned Payments: Any payment returned for insufficient funds shall incur a separate service charge of $60.00, which is distinct from and in addition to any late charge assessed under Section 4.1."
+    ],
+    "gold_clause": "4.3 Returned Payments: Any payment returned for insufficient funds shall incur a separate service charge of $60.00, which is distinct from and in addition to any late charge assessed under Section 4.1.",
+    "answer": "$60.00 (Page 3).",
+    "latency_s": 44.22,
+    "retry_count": 2,
+    "relevance_score": 0.2,
+    "retrieved_pages": [
+      3,
+      4,
+      15,
+      12,
+      7
+    ],
+    "correct": true,
+    "refused": false,
+    "false_refusal": false,
+    "citation_correct": true
+  },
+  {
+    "question": "What is the monthly pet rent, as opposed to the pet deposit?",
+    "answer_keys": [
+      "$75.00"
+    ],
+    "gold_page": 7,
+    "gold_section": "8.3",
+    "category": "adversarial",
+    "lease_index": 1,
+    "gold_pages": [
+      7
+    ],
+    "gold_clauses": [
+      "8.3 Pet Rent: In addition to the pet deposit, monthly pet rent of $75.00 per approved animal shall be added to the base rent and is due with each rent payment."
+    ],
+    "gold_clause": "8.3 Pet Rent: In addition to the pet deposit, monthly pet rent of $75.00 per approved animal shall be added to the base rent and is due with each rent payment.",
+    "answer": "The monthly pet rent is $75.00 per approved animal, as stated in Section 8.3 (Page 7).",
+    "latency_s": 23.49,
+    "retry_count": 1,
+    "relevance_score": 0.55,
+    "retrieved_pages": [
+      7,
+      2,
+      4,
+      15,
+      3
+    ],
+    "correct": true,
+    "refused": false,
+    "false_refusal": false,
+    "citation_correct": true
+  },
+  {
+    "question": "Besides the one-time late charge, what is the additional daily charge for unpaid rent?",
+    "answer_keys": [
+      "$15.00"
+    ],
+    "gold_page": 3,
+    "gold_section": "4.2",
+    "category": "adversarial",
+    "lease_index": 1,
+    "gold_pages": [
+      3
+    ],
+    "gold_clauses": [
+      "4.2 Additional Daily Charge: In addition to the late charge in Section 4.1, an additional $15.00 per day shall accrue for each day rent remains unpaid after the 7th day."
+    ],
+    "gold_clause": "4.2 Additional Daily Charge: In addition to the late charge in Section 4.1, an additional $15.00 per day shall accrue for each day rent remains unpaid after the 7th day.",
+    "answer": "$15.00 per day (Page 3).",
+    "latency_s": 25.0,
+    "retry_count": 1,
+    "relevance_score": 0.8,
+    "retrieved_pages": [
+      3,
+      15,
+      2,
+      11,
+      4
+    ],
+    "correct": true,
+    "refused": false,
+    "false_refusal": false,
+    "citation_correct": true
+  },
+  {
+    "question": "Can I list the apartment on Airbnb?",
+    "answer_keys": [
+      "No",
+      "no",
+      "not"
+    ],
+    "gold_page": 10,
+    "gold_section": "12.1",
+    "category": "adversarial",
+    "lease_index": 1,
+    "gold_pages": [
+      10
+    ],
+    "gold_clauses": [
+      "12.1 Tenant shall not assign this Agreement, sublet the Premises in whole or in part, or list the Premises on any short-term rental platform without Landlord's prior written consent."
+    ],
+    "gold_clause": "12.1 Tenant shall not assign this Agreement, sublet the Premises in whole or in part, or list the Premises on any short-term rental platform without Landlord's prior written consent.",
+    "answer": "I cannot find this in the lease.",
+    "latency_s": 53.64,
+    "retry_count": 2,
+    "relevance_score": 0.4,
+    "retrieved_pages": [
+      16,
+      15,
+      10,
+      6,
+      1
+    ],
+    "correct": false,
+    "refused": true,
+    "false_refusal": true,
+    "citation_correct": false
+  },
+  {
+    "question": "Do I have to pay a pet deposit for a service animal?",
+    "answer_keys": [
+      "No",
+      "exempt",
+      "not"
+    ],
+    "gold_page": 7,
+    "gold_section": "8.4",
+    "category": "adversarial",
+    "lease_index": 1,
+    "gold_pages": [
+      7
+    ],
+    "gold_clauses": [
+      "8.4 Restrictions: No individual animal may exceed 80 pounds at maturity. Service animals and assistance animals required by applicable fair housing law are exempt from the deposit, pet rent, and weight restrictions in this Section."
+    ],
+    "gold_clause": "8.4 Restrictions: No individual animal may exceed 80 pounds at maturity. Service animals and assistance animals required by applicable fair housing law are exempt from the deposit, pet rent, and weight restrictions in this Section.",
+    "answer": "According to Section 8.4, Service animals and assistance animals required by applicable fair housing law are exempt from the deposit, pet rent, and weight restrictions in this Section. (Page 7)",
+    "latency_s": 33.98,
+    "retry_count": 1,
+    "relevance_score": 0.95,
+    "retrieved_pages": [
+      7,
+      4,
+      15,
+      16,
+      3
+    ],
+    "correct": true,
+    "refused": false,
+    "false_refusal": false,
+    "citation_correct": true
+  },
+  {
+    "question": "Can I use the security deposit to pay my last month of rent?",
+    "answer_keys": [
+      "No",
+      "not",
+      "shall not"
+    ],
+    "gold_page": 4,
+    "gold_section": "5.2",
+    "category": "adversarial",
+    "lease_index": 1,
+    "gold_pages": [
+      4
+    ],
+    "gold_clauses": [
+      "5.2 The security deposit shall not be applied by Tenant as payment of the last month's rent or any other rent obligation during the term."
+    ],
+    "gold_clause": "5.2 The security deposit shall not be applied by Tenant as payment of the last month's rent or any other rent obligation during the term.",
+    "answer": "I cannot find this in the lease.",
+    "latency_s": 32.24,
+    "retry_count": 1,
+    "relevance_score": 0.8,
+    "retrieved_pages": [
+      4,
+      12,
+      3,
+      11,
+      2
+    ],
+    "correct": false,
+    "refused": true,
+    "false_refusal": true,
+    "citation_correct": false
+  },
+  {
+    "question": "Can I change the locks myself?",
+    "answer_keys": [
+      "No",
+      "not",
+      "consent"
+    ],
+    "gold_page": 9,
+    "gold_section": "10.1",
+    "category": "adversarial",
+    "lease_index": 1,
+    "gold_pages": [
+      9
+    ],
+    "gold_clauses": [
+      "10.1 Tenant shall not paint, wallpaper, install fixtures, change locks, or make any structural alteration to the Premises without Landlord's express prior written consent."
+    ],
+    "gold_clause": "10.1 Tenant shall not paint, wallpaper, install fixtures, change locks, or make any structural alteration to the Premises without Landlord's express prior written consent.",
+    "answer": "No, you cannot change the locks yourself without the Landlord's express prior written consent. (Page 9, Section 10.1)",
+    "latency_s": 31.91,
+    "retry_count": 1,
+    "relevance_score": 0.6,
+    "retrieved_pages": [
+      9,
+      15,
+      13,
+      8,
+      10
+    ],
+    "correct": true,
+    "refused": false,
+    "false_refusal": false,
+    "citation_correct": true
+  },
+  {
+    "question": "How much is the returned check fee, not the late fee?",
+    "answer_keys": [
+      "$25.00"
+    ],
+    "gold_page": 3,
+    "gold_section": "4.3",
+    "category": "adversarial",
+    "lease_index": 2,
+    "gold_pages": [
+      3
+    ],
+    "gold_clauses": [
+      "4.3 Returned Payments: Any payment returned for insufficient funds shall incur a separate service charge of $25.00, which is distinct from and in addition to any late charge assessed under Section 4.1."
+    ],
+    "gold_clause": "4.3 Returned Payments: Any payment returned for insufficient funds shall incur a separate service charge of $25.00, which is distinct from and in addition to any late charge assessed under Section 4.1.",
+    "answer": "$25.00 (Page 3).",
+    "latency_s": 49.13,
+    "retry_count": 2,
+    "relevance_score": 0.45,
+    "retrieved_pages": [
+      3,
+      15,
+      4,
+      12,
+      13
+    ],
+    "correct": true,
+    "refused": false,
+    "false_refusal": false,
+    "citation_correct": true
+  },
+  {
+    "question": "What is the monthly base rent?",
+    "answer_keys": [
+      "$2,600.00"
+    ],
+    "gold_page": 2,
+    "gold_section": "3.1",
+    "category": "lookup",
+    "lease_index": 0,
+    "gold_pages": [
+      2
+    ],
+    "gold_clauses": [
+      "3.1 Monthly Rent: Tenant agrees to pay Landlord the sum of $2,600.00 per month as base rent, payable in advance on or before the first (1st) day of each calendar month."
+    ],
+    "gold_clause": "3.1 Monthly Rent: Tenant agrees to pay Landlord the sum of $2,600.00 per month as base rent, payable in advance on or before the first (1st) day of each calendar month.",
+    "answer": "$2,600.00 (Page 2).",
+    "latency_s": 31.36,
+    "retry_count": 1,
+    "relevance_score": 0.8,
+    "retrieved_pages": [
+      2,
+      11,
+      12,
+      7,
+      14
+    ],
+    "correct": true,
+    "refused": false,
+    "false_refusal": false,
+    "citation_correct": true
+  },
+  {
+    "question": "When is rent due each month?",
+    "answer_keys": [
+      "first",
+      "1st"
+    ],
+    "gold_page": 2,
+    "gold_section": "3.1",
+    "category": "lookup",
+    "lease_index": 0,
+    "gold_pages": [
+      2
+    ],
+    "gold_clauses": [
+      "3.1 Monthly Rent: Tenant agrees to pay Landlord the sum of $2,600.00 per month as base rent, payable in advance on or before the first (1st) day of each calendar month."
+    ],
+    "gold_clause": "3.1 Monthly Rent: Tenant agrees to pay Landlord the sum of $2,600.00 per month as base rent, payable in advance on or before the first (1st) day of each calendar month.",
+    "answer": "Rent is due on or before the first (1st) day of each calendar month. (Page 2)",
+    "latency_s": 29.69,
+    "retry_count": 1,
+    "relevance_score": 0.9,
+    "retrieved_pages": [
+      2,
+      15,
+      7,
+      3,
+      12
+    ],
+    "correct": true,
+    "refused": false,
+    "false_refusal": false,
+    "citation_correct": true
+  },
+  {
+    "question": "How much is the security deposit?",
+    "answer_keys": [
+      "$3,900.00"
+    ],
+    "gold_page": 4,
+    "gold_section": "5.1",
+    "category": "lookup",
+    "lease_index": 0,
+    "gold_pages": [
+      4
+    ],
+    "gold_clauses": [
+      "5.1 Amount: Upon execution of this Agreement, Tenant shall deposit with Landlord the sum of $3,900.00 as a security deposit."
+    ],
+    "gold_clause": "5.1 Amount: Upon execution of this Agreement, Tenant shall deposit with Landlord the sum of $3,900.00 as a security deposit.",
+    "answer": "The security deposit is $3,900.00. (Page 4)",
+    "latency_s": 30.47,
+    "retry_count": 1,
+    "relevance_score": 0.9,
+    "retrieved_pages": [
+      4,
+      7,
+      15,
+      3,
+      2
+    ],
+    "correct": true,
+    "refused": false,
+    "false_refusal": false,
+    "citation_correct": true
+  },
+  {
+    "question": "How many days does the landlord have to return my security deposit?",
+    "answer_keys": [
+      "14"
+    ],
+    "gold_page": 4,
+    "gold_section": "5.3",
+    "category": "lookup",
+    "lease_index": 0,
+    "gold_pages": [
+      4
+    ],
+    "gold_clauses": [
+      "5.3 Return: Landlord shall return the security deposit, less any lawful deductions, within 14 days after Tenant vacates and returns all keys."
+    ],
+    "gold_clause": "5.3 Return: Landlord shall return the security deposit, less any lawful deductions, within 14 days after Tenant vacates and returns all keys.",
+    "answer": "14 days after Tenant vacates and returns all keys. (Page 4)",
+    "latency_s": 27.84,
+    "retry_count": 1,
+    "relevance_score": 0.8,
+    "retrieved_pages": [
+      4,
+      3,
+      12,
+      1,
+      2
+    ],
+    "correct": true,
+    "refused": false,
+    "false_refusal": false,
+    "citation_correct": true
+  },
+  {
+    "question": "When does the lease expire?",
+    "answer_keys": [
+      "February 28, 2028"
+    ],
+    "gold_page": 1,
+    "gold_section": "2.1",
+    "category": "lookup",
+    "lease_index": 0,
+    "gold_pages": [
+      1
+    ],
+    "gold_clauses": [
+      "2.1 The term of this Agreement shall commence on January 1, 2027 (\"Commencement Date\") and shall continue for a period of 18 months, expiring on February 28, 2028 at 11:59 PM local time."
+    ],
+    "gold_clause": "2.1 The term of this Agreement shall commence on January 1, 2027 (\"Commencement Date\") and shall continue for a period of 18 months, expiring on February 28, 2028 at 11:59 PM local time.",
+    "answer": "The lease expires on February 28, 2028 at 11:59 PM local time. (Page 2)",
+    "latency_s": 28.05,
+    "retry_count": 1,
+    "relevance_score": 0.8,
+    "retrieved_pages": [
+      1,
+      12,
+      11,
+      14,
+      3
+    ],
+    "correct": true,
+    "refused": false,
+    "false_refusal": false,
+    "citation_correct": false
+  },
+  {
+    "question": "How long is the lease term?",
+    "answer_keys": [
+      "18"
+    ],
+    "gold_page": 1,
+    "gold_section": "2.1",
+    "category": "lookup",
+    "lease_index": 0,
+    "gold_pages": [
+      1
+    ],
+    "gold_clauses": [
+      "2.1 The term of this Agreement shall commence on January 1, 2027 (\"Commencement Date\") and shall continue for a period of 18 months, expiring on February 28, 2028 at 11:59 PM local time."
+    ],
+    "gold_clause": "2.1 The term of this Agreement shall commence on January 1, 2027 (\"Commencement Date\") and shall continue for a period of 18 months, expiring on February 28, 2028 at 11:59 PM local time.",
+    "answer": "The lease term is for a period of 18 months, commencing on January 1, 2027, and expiring on February 28, 2028 (Page 2).",
+    "latency_s": 26.52,
+    "retry_count": 1,
+    "relevance_score": 0.5,
+    "retrieved_pages": [
+      1,
+      12,
+      11,
+      4,
+      3
+    ],
+    "correct": true,
+    "refused": false,
+    "false_refusal": false,
+    "citation_correct": false
+  },
+  {
+    "question": "What is the late fee for paying rent late?",
+    "answer_keys": [
+      "$75.00"
+    ],
+    "gold_page": 3,
+    "gold_section": "4.1",
+    "category": "lookup",
+    "lease_index": 0,
+    "gold_pages": [
+      3
+    ],
+    "gold_clauses": [
+      "4.1 Grace Period: Rent received after the 7th day of the month shall be considered late and shall incur a one-time late charge of $75.00."
+    ],
+    "gold_clause": "4.1 Grace Period: Rent received after the 7th day of the month shall be considered late and shall incur a one-time late charge of $75.00.",
+    "answer": "A late charge of $75.00 shall be incurred for rent received after the 7th day of the month. In addition, an additional $5.00 per day shall accrue for each day rent remains unpaid after the 7th day. (Page 3)",
+    "latency_s": 26.81,
+    "retry_count": 1,
+    "relevance_score": 0.95,
+    "retrieved_pages": [
+      3,
+      15,
+      11,
+      2,
+      12
+    ],
+    "correct": true,
+    "refused": false,
+    "false_refusal": false,
+    "citation_correct": true
+  },
+  {
+    "question": "How much notice must the landlord give before entering?",
+    "answer_keys": [
+      "48"
+    ],
+    "gold_page": 9,
+    "gold_section": "11.2",
+    "category": "lookup",
+    "lease_index": 0,
+    "gold_pages": [
+      9
+    ],
+    "gold_clauses": [
+      "11.2 Notice: Except in an emergency involving imminent hazard to person or property, Landlord shall provide Tenant with at least 48 hours advance notice before entering the Premises."
+    ],
+    "gold_clause": "11.2 Notice: Except in an emergency involving imminent hazard to person or property, Landlord shall provide Tenant with at least 48 hours advance notice before entering the Premises.",
+    "answer": "Except in an emergency, the landlord must provide at least 48 hours advance notice before entering the Premises. (Page 10, Section 11.2)",
+    "latency_s": 23.77,
+    "retry_count": 1,
+    "relevance_score": 0.7,
+    "retrieved_pages": [
+      9,
+      6,
+      11,
+      12,
+      16
+    ],
+    "correct": true,
+    "refused": false,
+    "false_refusal": false,
+    "citation_correct": false
+  },
+  {
+    "question": "How many people are allowed to live in the unit?",
+    "answer_keys": [
+      "4"
+    ],
+    "gold_page": 6,
+    "gold_section": "7.1",
+    "category": "lookup",
+    "lease_index": 0,
+    "gold_pages": [
+      6
+    ],
+    "gold_clauses": [
+      "7.1 Permitted Occupants: The Premises shall be occupied by no more than 4 persons without Landlord's prior written consent."
+    ],
+    "gold_clause": "7.1 Permitted Occupants: The Premises shall be occupied by no more than 4 persons without Landlord's prior written consent.",
+    "answer": "4 persons without Landlord's prior written consent. (Page 6)",
+    "latency_s": 23.43,
+    "retry_count": 1,
+    "relevance_score": 0.5,
+    "retrieved_pages": [
+      6,
+      10,
+      5,
+      14,
+      7
+    ],
+    "correct": true,
+    "refused": false,
+    "false_refusal": false,
+    "citation_correct": true
+  },
+  {
+    "question": "How much is the pet deposit?",
+    "answer_keys": [
+      "$200.00"
+    ],
+    "gold_page": 7,
+    "gold_section": "8.2",
+    "category": "lookup",
+    "lease_index": 0,
+    "gold_pages": [
+      7
+    ],
+    "gold_clauses": [
+      "8.2 Pet Deposit: A refundable pet deposit of $200.00 is required per approved animal at the time the Pet Addendum is signed."
+    ],
+    "gold_clause": "8.2 Pet Deposit: A refundable pet deposit of $200.00 is required per approved animal at the time the Pet Addendum is signed.",
+    "answer": "$200.00 (Page 7).",
+    "latency_s": 23.96,
+    "retry_count": 1,
+    "relevance_score": 0.7,
+    "retrieved_pages": [
+      7,
+      4,
+      15,
+      3,
+      14
+    ],
+    "correct": true,
+    "refused": false,
+    "false_refusal": false,
+    "citation_correct": true
+  },
+  {
+    "question": "What is the maximum weight allowed for a pet?",
+    "answer_keys": [
+      "35"
+    ],
+    "gold_page": 7,
+    "gold_section": "8.4",
+    "category": "lookup",
+    "lease_index": 0,
+    "gold_pages": [
+      7
+    ],
+    "gold_clauses": [
+      "8.4 Restrictions: No individual animal may exceed 35 pounds at maturity. Service animals and assistance animals required by applicable fair housing law are exempt from the deposit, pet rent, and weight restrictions in this Section."
+    ],
+    "gold_clause": "8.4 Restrictions: No individual animal may exceed 35 pounds at maturity. Service animals and assistance animals required by applicable fair housing law are exempt from the deposit, pet rent, and weight restrictions in this Section.",
+    "answer": "No individual animal may exceed 35 pounds at maturity. (Page 7)",
+    "latency_s": 48.56,
+    "retry_count": 2,
+    "relevance_score": 0.5,
+    "retrieved_pages": [
+      7,
+      14,
+      10,
+      4,
+      6
+    ],
+    "correct": true,
+    "refused": false,
+    "false_refusal": false,
+    "citation_correct": true
+  },
+  {
+    "question": "How much renter's insurance coverage am I required to carry?",
+    "answer_keys": [
+      "$500,000.00"
+    ],
+    "gold_page": 13,
+    "gold_section": "16.1",
+    "category": "lookup",
+    "lease_index": 0,
+    "gold_pages": [
+      13
+    ],
+    "gold_clauses": [
+      "16.1 Tenant shall obtain and maintain renter's liability insurance with minimum coverage of $500,000.00 for the duration of the tenancy."
+    ],
+    "gold_clause": "16.1 Tenant shall obtain and maintain renter's liability insurance with minimum coverage of $500,000.00 for the duration of the tenancy.",
+    "answer": "(Page 16.1) Tenant shall obtain and maintain renter's liability insurance with minimum coverage of $500,000.00 for the duration of the tenancy.",
+    "latency_s": 33.11,
+    "retry_count": 1,
+    "relevance_score": 0.8,
+    "retrieved_pages": [
+      13,
+      4,
+      6,
+      8,
+      5
+    ],
+    "correct": true,
+    "refused": false,
+    "false_refusal": false,
+    "citation_correct": false
+  },
+  {
+    "question": "How many parking spaces am I assigned?",
+    "answer_keys": [
+      "1"
+    ],
+    "gold_page": 14,
+    "gold_section": "17.1",
+    "category": "lookup",
+    "lease_index": 0,
+    "gold_pages": [
+      14
+    ],
+    "gold_clauses": [
+      "17.1 Assigned Spaces: Tenant is assigned 1 parking space(s) for the duration of the tenancy."
+    ],
+    "gold_clause": "17.1 Assigned Spaces: Tenant is assigned 1 parking space(s) for the duration of the tenancy.",
+    "answer": "1 parking space(s) for the duration of the tenancy. (Page 14)",
+    "latency_s": 48.38,
+    "retry_count": 2,
+    "relevance_score": 0.5,
+    "retrieved_pages": [
+      14,
+      10,
+      6,
+      15,
+      8
+    ],
+    "correct": true,
+    "refused": false,
+    "false_refusal": false,
+    "citation_correct": true
+  },
+  {
+    "question": "Which state's law governs this lease?",
+    "answer_keys": [
+      "Oregon"
+    ],
+    "gold_page": 14,
+    "gold_section": "18.1",
+    "category": "lookup",
+    "lease_index": 0,
+    "gold_pages": [
+      14
+    ],
+    "gold_clauses": [
+      "18.1 This Agreement shall be governed by and construed in accordance with the laws of the State of Oregon."
+    ],
+    "gold_clause": "18.1 This Agreement shall be governed by and construed in accordance with the laws of the State of Oregon.",
+    "answer": "The state whose law governs this lease is the State of Oregon (Page 18.1).",
+    "latency_s": 49.18,
+    "retry_count": 2,
+    "relevance_score": 0.4,
+    "retrieved_pages": [
+      14,
+      1,
+      10,
+      7,
+      13
+    ],
+    "correct": true,
+    "refused": false,
+    "false_refusal": false,
+    "citation_correct": false
+  },
+  {
+    "question": "How many days do I have to cure a default?",
+    "answer_keys": [
+      "10"
+    ],
+    "gold_page": 13,
+    "gold_section": "15.2",
+    "category": "lookup",
+    "lease_index": 0,
+    "gold_pages": [
+      13
+    ],
+    "gold_clauses": [
+      "15.2 Cure Period: Upon default, Landlord shall deliver written notice specifying the default, and Tenant shall have 10 days from delivery of such notice to cure the default or vacate the Premises."
+    ],
+    "gold_clause": "15.2 Cure Period: Upon default, Landlord shall deliver written notice specifying the default, and Tenant shall have 10 days from delivery of such notice to cure the default or vacate the Premises.",
+    "answer": "You have 10 days from delivery of written notice from Landlord to cure the default or vacate the Premises. (Page 13)",
+    "latency_s": 25.64,
+    "retry_count": 1,
+    "relevance_score": 0.6,
+    "retrieved_pages": [
+      13,
+      3,
+      12,
+      16,
+      8
+    ],
+    "correct": true,
+    "refused": false,
+    "false_refusal": false,
+    "citation_correct": true
+  },
+  {
+    "question": "If I pay rent on the 10th of the month, how much do I owe in total?",
+    "answer_keys": [
+      "$2,675.00"
+    ],
+    "gold_page": 2,
+    "gold_section": "3.1+4.1",
+    "category": "multi_hop",
+    "lease_index": 0,
+    "gold_pages": [
+      2,
+      3
+    ],
+    "gold_clauses": [
+      "3.1 Monthly Rent: Tenant agrees to pay Landlord the sum of $2,600.00 per month as base rent, payable in advance on or before the first (1st) day of each calendar month.",
+      "4.1 Grace Period: Rent received after the 7th day of the month shall be considered late and shall incur a one-time late charge of $75.00."
+    ],
+    "gold_clause": "3.1 Monthly Rent: Tenant agrees to pay Landlord the sum of $2,600.00 per month as base rent, payable in advance on or before the first (1st) day of each calendar month.",
+    "answer": "I cannot find the answer to this question in the lease.",
+    "latency_s": 49.26,
+    "retry_count": 2,
+    "relevance_score": 0.35,
+    "retrieved_pages": [
+      3,
+      2,
+      4,
+      15,
+      12
+    ],
+    "correct": false,
+    "refused": true,
+    "false_refusal": true,
+    "citation_correct": false
+  },
+  {
+    "question": "What is my total due at move-in, counting first month's rent and the deposit?",
+    "answer_keys": [
+      "$6,500.00"
+    ],
+    "gold_page": 2,
+    "gold_section": "3.1+5.1",
+    "category": "multi_hop",
+    "lease_index": 0,
+    "gold_pages": [
+      2,
+      4
+    ],
+    "gold_clauses": [
+      "3.1 Monthly Rent: Tenant agrees to pay Landlord the sum of $2,600.00 per month as base rent, payable in advance on or before the first (1st) day of each calendar month.",
+      "5.1 Amount: Upon execution of this Agreement, Tenant shall deposit with Landlord the sum of $3,900.00 as a security deposit."
+    ],
+    "gold_clause": "3.1 Monthly Rent: Tenant agrees to pay Landlord the sum of $2,600.00 per month as base rent, payable in advance on or before the first (1st) day of each calendar month.",
+    "answer": "Your total due at move-in is the first month's rent ($2,600.00) (Page 3) plus the security deposit ($3,900.00) (Page 4). The total is $6,500.00.",
+    "latency_s": 36.79,
+    "retry_count": 1,
+    "relevance_score": 0.8,
+    "retrieved_pages": [
+      4,
+      2,
+      3,
+      15,
+      16
+    ],
+    "correct": true,
+    "refused": false,
+    "false_refusal": false,
+    "citation_correct": false
+  },
+  {
+    "question": "If I get an approved dog, what is my total monthly payment?",
+    "answer_keys": [
+      "$2,635.00"
+    ],
+    "gold_page": 2,
+    "gold_section": "3.1+8.3",
+    "category": "multi_hop",
+    "lease_index": 0,
+    "gold_pages": [
+      2,
+      7
+    ],
+    "gold_clauses": [
+      "3.1 Monthly Rent: Tenant agrees to pay Landlord the sum of $2,600.00 per month as base rent, payable in advance on or before the first (1st) day of each calendar month.",
+      "8.3 Pet Rent: In addition to the pet deposit, monthly pet rent of $35.00 per approved animal shall be added to the base rent and is due with each rent payment."
+    ],
+    "gold_clause": "3.1 Monthly Rent: Tenant agrees to pay Landlord the sum of $2,600.00 per month as base rent, payable in advance on or before the first (1st) day of each calendar month.",
+    "answer": "Your base rent is $2,600.00 per month (Page 3). In addition to pet rent, you must pay $35.00 per approved animal per month (Page 7, Section 8.3). Therefore, your total monthly payment would be $2,600.00 + $35.00 (assuming one approved animal) = $2,635.00 per month.",
+    "latency_s": 38.53,
+    "retry_count": 1,
+    "relevance_score": 0.8,
+    "retrieved_pages": [
+      7,
+      15,
+      2,
+      14,
+      3
+    ],
+    "correct": true,
+    "refused": false,
+    "false_refusal": false,
+    "citation_correct": false
+  },
+  {
+    "question": "What is the total early termination fee in dollars?",
+    "answer_keys": [
+      "$2,600.00"
+    ],
+    "gold_page": 11,
+    "gold_section": "13.2",
+    "category": "multi_hop",
+    "lease_index": 0,
+    "gold_pages": [
+      11
+    ],
+    "gold_clauses": [
+      "13.2 Termination Fee: In addition to the notice required in Section 13.1, Tenant shall pay an early termination fee equal to 1 month(s) of base rent, being $2,600.00."
+    ],
+    "gold_clause": "13.2 Termination Fee: In addition to the notice required in Section 13.1, Tenant shall pay an early termination fee equal to 1 month(s) of base rent, being $2,600.00.",
+    "answer": "The early termination fee is equal to 1 month(s) of base rent, being $2,600.00. (Page 11)",
+    "latency_s": 38.69,
+    "retry_count": 1,
+    "relevance_score": 0.75,
+    "retrieved_pages": [
+      11,
+      3,
+      15,
+      4,
+      12
+    ],
+    "correct": true,
+    "refused": false,
+    "false_refusal": false,
+    "citation_correct": true
+  },
+  {
+    "question": "If I stay past the expiration date without consent, what is the monthly rent?",
+    "answer_keys": [
+      "$3,250.00"
+    ],
+    "gold_page": 12,
+    "gold_section": "14.3",
+    "category": "multi_hop",
+    "lease_index": 0,
+    "gold_pages": [
+      12
+    ],
+    "gold_clauses": [
+      "14.3 Holdover: If Tenant remains in possession after expiration without Landlord's written consent, Tenant shall pay holdover rent equal to 125% of the base monthly rent, being $3,250.00 per month."
+    ],
+    "gold_clause": "14.3 Holdover: If Tenant remains in possession after expiration without Landlord's written consent, Tenant shall pay holdover rent equal to 125% of the base monthly rent, being $3,250.00 per month.",
+    "answer": "The monthly rent in this scenario is $3,250.00, which is 125% of the base monthly rent of $2,600.00. (Page 12, Section 14.3)",
+    "latency_s": 31.97,
+    "retry_count": 1,
+    "relevance_score": 0.9,
+    "retrieved_pages": [
+      12,
+      11,
+      2,
+      3,
+      15
+    ],
+    "correct": true,
+    "refused": false,
+    "false_refusal": false,
+    "citation_correct": true
+  },
+  {
+    "question": "Can I have a guest stay for a full month without asking the landlord?",
+    "answer_keys": [
+      "No",
+      "no"
+    ],
+    "gold_page": 6,
+    "gold_section": "7.2",
+    "category": "multi_hop",
+    "lease_index": 0,
+    "gold_pages": [
+      6
+    ],
+    "gold_clauses": [
+      "7.2 Guests: Any guest remaining on the Premises for more than 7 consecutive days, or more than twice that number of days in any twelve-month period, shall be deemed an unauthorized occupant and requires Landlord's prior written authorization."
+    ],
+    "gold_clause": "7.2 Guests: Any guest remaining on the Premises for more than 7 consecutive days, or more than twice that number of days in any twelve-month period, shall be deemed an unauthorized occupant and requires Landlord's prior written authorization.",
+    "answer": "According to 7.2 Guests (Page 6), any guest remaining on the Premises for more than 7 consecutive days, or more than twice that number of days in any twelve-month period, shall be deemed an unauthorized occupant and requires Landlord's prior written authorization.",
+    "latency_s": 31.31,
+    "retry_count": 1,
+    "relevance_score": 0.8,
+    "retrieved_pages": [
+      6,
+      12,
+      15,
+      2,
+      4
+    ],
+    "correct": false,
+    "refused": false,
+    "false_refusal": false,
+    "citation_correct": true
+  },
+  {
+    "question": "If I pay rent on the 10th of the month, how much do I owe in total?",
+    "answer_keys": [
+      "$1,485.00"
+    ],
+    "gold_page": 2,
+    "gold_section": "3.1+4.1",
+    "category": "multi_hop",
+    "lease_index": 1,
+    "gold_pages": [
+      2,
+      3
+    ],
+    "gold_clauses": [
+      "3.1 Monthly Rent: Tenant agrees to pay Landlord the sum of $1,450.00 per month as base rent, payable in advance on or before the first (1st) day of each calendar month.",
+      "4.1 Grace Period: Rent received after the 7th day of the month shall be considered late and shall incur a one-time late charge of $35.00."
+    ],
+    "gold_clause": "3.1 Monthly Rent: Tenant agrees to pay Landlord the sum of $1,450.00 per month as base rent, payable in advance on or before the first (1st) day of each calendar month.",
+    "answer": "I cannot find the answer to this question in the lease.",
+    "latency_s": 28.6,
+    "retry_count": 1,
+    "relevance_score": 0.55,
+    "retrieved_pages": [
+      3,
+      2,
+      15,
+      4,
+      11
+    ],
+    "correct": false,
+    "refused": true,
+    "false_refusal": true,
+    "citation_correct": false
+  },
+  {
+    "question": "What is my total due at move-in, counting first month's rent and the deposit?",
+    "answer_keys": [
+      "$4,350.00"
+    ],
+    "gold_page": 2,
+    "gold_section": "3.1+5.1",
+    "category": "multi_hop",
+    "lease_index": 1,
+    "gold_pages": [
+      2,
+      4
+    ],
+    "gold_clauses": [
+      "3.1 Monthly Rent: Tenant agrees to pay Landlord the sum of $1,450.00 per month as base rent, payable in advance on or before the first (1st) day of each calendar month.",
+      "5.1 Amount: Upon execution of this Agreement, Tenant shall deposit with Landlord the sum of $2,900.00 as a security deposit."
+    ],
+    "gold_clause": "3.1 Monthly Rent: Tenant agrees to pay Landlord the sum of $1,450.00 per month as base rent, payable in advance on or before the first (1st) day of each calendar month.",
+    "answer": "First month's rent is $1,450.00 (Page 2, Section 3.1), and the security deposit is $2,900.00 (Page 4, Section 5.1). Total due at move-in is $4,350.00.",
+    "latency_s": 44.11,
+    "retry_count": 2,
+    "relevance_score": 0.4,
+    "retrieved_pages": [
+      4,
+      2,
+      3,
+      15,
+      13
+    ],
+    "correct": true,
+    "refused": false,
+    "false_refusal": false,
+    "citation_correct": true
+  },
+  {
+    "question": "If I get an approved dog, what is my total monthly payment?",
+    "answer_keys": [
+      "$1,525.00"
+    ],
+    "gold_page": 2,
+    "gold_section": "3.1+8.3",
+    "category": "multi_hop",
+    "lease_index": 1,
+    "gold_pages": [
+      2,
+      7
+    ],
+    "gold_clauses": [
+      "3.1 Monthly Rent: Tenant agrees to pay Landlord the sum of $1,450.00 per month as base rent, payable in advance on or before the first (1st) day of each calendar month.",
+      "8.3 Pet Rent: In addition to the pet deposit, monthly pet rent of $75.00 per approved animal shall be added to the base rent and is due with each rent payment."
+    ],
+    "gold_clause": "3.1 Monthly Rent: Tenant agrees to pay Landlord the sum of $1,450.00 per month as base rent, payable in advance on or before the first (1st) day of each calendar month.",
+    "answer": "According to Section 8.2, the pet deposit is $200.00, and Section 3.1 states the base rent is $1,450.00. Section 8.3 adds a monthly pet rent of $75.00 per approved animal. Since you have only one dog, the total monthly payment would be $1,450.00 (base rent) + $75.00 (pet rent) = $1,525.00.",
+    "latency_s": 29.6,
+    "retry_count": 1,
+    "relevance_score": 0.75,
+    "retrieved_pages": [
+      7,
+      15,
+      2,
+      3,
+      4
+    ],
+    "correct": true,
+    "refused": false,
+    "false_refusal": false,
+    "citation_correct": false
+  },
+  {
+    "question": "What is the total early termination fee in dollars?",
+    "answer_keys": [
+      "$1,450.00"
+    ],
+    "gold_page": 11,
+    "gold_section": "13.2",
+    "category": "multi_hop",
+    "lease_index": 1,
+    "gold_pages": [
+      11
+    ],
+    "gold_clauses": [
+      "13.2 Termination Fee: In addition to the notice required in Section 13.1, Tenant shall pay an early termination fee equal to 1 month(s) of base rent, being $1,450.00."
+    ],
+    "gold_clause": "13.2 Termination Fee: In addition to the notice required in Section 13.1, Tenant shall pay an early termination fee equal to 1 month(s) of base rent, being $1,450.00.",
+    "answer": "The total early termination fee is $1,450.00, plus the base rent for the remaining term, but this is not explicitly stated. However, Section 13.2 states the fee is equal to 1 month(s) of base rent, being $1,450.00. To determine the total, we would need to know the length of the remaining term.",
+    "latency_s": 31.38,
+    "retry_count": 1,
+    "relevance_score": 0.9,
+    "retrieved_pages": [
+      11,
+      15,
+      3,
+      4,
+      12
+    ],
+    "correct": true,
+    "refused": false,
+    "false_refusal": false,
+    "citation_correct": false
+  },
+  {
+    "question": "If I stay past the expiration date without consent, what is the monthly rent?",
+    "answer_keys": [
+      "$1,812.00"
+    ],
+    "gold_page": 12,
+    "gold_section": "14.3",
+    "category": "multi_hop",
+    "lease_index": 1,
+    "gold_pages": [
+      12
+    ],
+    "gold_clauses": [
+      "14.3 Holdover: If Tenant remains in possession after expiration without Landlord's written consent, Tenant shall pay holdover rent equal to 125% of the base monthly rent, being $1,812.00 per month."
+    ],
+    "gold_clause": "14.3 Holdover: If Tenant remains in possession after expiration without Landlord's written consent, Tenant shall pay holdover rent equal to 125% of the base monthly rent, being $1,812.00 per month.",
+    "answer": "HOLDOVER RENT: Tenant shall pay holdover rent equal to 125% of the base monthly rent, being $1,812.00 per month. (Page 12, 14.3)",
+    "latency_s": 33.22,
+    "retry_count": 1,
+    "relevance_score": 0.55,
+    "retrieved_pages": [
+      12,
+      11,
+      2,
+      3,
+      10
+    ],
+    "correct": true,
+    "refused": false,
+    "false_refusal": false,
+    "citation_correct": true
+  },
+  {
+    "question": "Can I have a guest stay for a full month without asking the landlord?",
+    "answer_keys": [
+      "No",
+      "no"
+    ],
+    "gold_page": 6,
+    "gold_section": "7.2",
+    "category": "multi_hop",
+    "lease_index": 1,
+    "gold_pages": [
+      6
+    ],
+    "gold_clauses": [
+      "7.2 Guests: Any guest remaining on the Premises for more than 21 consecutive days, or more than twice that number of days in any twelve-month period, shall be deemed an unauthorized occupant and requires Landlord's prior written authorization."
+    ],
+    "gold_clause": "7.2 Guests: Any guest remaining on the Premises for more than 21 consecutive days, or more than twice that number of days in any twelve-month period, shall be deemed an unauthorized occupant and requires Landlord's prior written authorization.",
+    "answer": "According to the lease, any guest remaining on the Premises for more than 21 consecutive days, or more than twice that number of days in any twelve-month period, shall be deemed an unauthorized occupant and requires Landlord's prior written authorization (Page 6).",
+    "latency_s": 41.34,
+    "retry_count": 1,
+    "relevance_score": 0.75,
+    "retrieved_pages": [
+      6,
+      12,
+      15,
+      4,
+      9
+    ],
+    "correct": false,
+    "refused": false,
+    "false_refusal": false,
+    "citation_correct": true
+  },
+  {
+    "question": "If I pay rent on the 6th of the month, how much do I owe in total?",
+    "answer_keys": [
+      "$1,710.00"
+    ],
+    "gold_page": 2,
+    "gold_section": "3.1+4.1",
+    "category": "multi_hop",
+    "lease_index": 2,
+    "gold_pages": [
+      2,
+      3
+    ],
+    "gold_clauses": [
+      "3.1 Monthly Rent: Tenant agrees to pay Landlord the sum of $1,675.00 per month as base rent, payable in advance on or before the first (1st) day of each calendar month.",
+      "4.1 Grace Period: Rent received after the 3th day of the month shall be considered late and shall incur a one-time late charge of $35.00."
+    ],
+    "gold_clause": "3.1 Monthly Rent: Tenant agrees to pay Landlord the sum of $1,675.00 per month as base rent, payable in advance on or before the first (1st) day of each calendar month.",
+    "answer": "You owe the base rent of $1,675.00 (Page 2, Section 3.1). Since you paid it on the 6th, it is considered late (Page 3, Section 4.1), so you also owe a one-time late charge of $35.00 and an additional daily charge of $15.00 per day from the 4th to the 6th, which is 3 days. \n\nThe total additional charge is $45.00 (3 days x $15.00 per day) + $35.00 = $80.00. \n\nYour total payment due for the month is $1,675.00 (base rent) + $80.00 (late charges) = $1,755.00.",
+    "latency_s": 44.62,
+    "retry_count": 1,
+    "relevance_score": 0.7,
+    "retrieved_pages": [
+      3,
+      2,
+      15,
+      4,
+      11
+    ],
+    "correct": false,
+    "refused": false,
+    "false_refusal": false,
+    "citation_correct": true
+  },
+  {
+    "question": "What is my total due at move-in, counting first month's rent and the deposit?",
+    "answer_keys": [
+      "$5,025.00"
+    ],
+    "gold_page": 2,
+    "gold_section": "3.1+5.1",
+    "category": "multi_hop",
+    "lease_index": 2,
+    "gold_pages": [
+      2,
+      4
+    ],
+    "gold_clauses": [
+      "3.1 Monthly Rent: Tenant agrees to pay Landlord the sum of $1,675.00 per month as base rent, payable in advance on or before the first (1st) day of each calendar month.",
+      "5.1 Amount: Upon execution of this Agreement, Tenant shall deposit with Landlord the sum of $3,350.00 as a security deposit."
+    ],
+    "gold_clause": "3.1 Monthly Rent: Tenant agrees to pay Landlord the sum of $1,675.00 per month as base rent, payable in advance on or before the first (1st) day of each calendar month.",
+    "answer": "The first month's rent is $1,675.00 (Page 2, Section 3.1) and the security deposit is $3,350.00 (Page 4, Section 5.1). Therefore, your total due at move-in is $5,025.00.",
+    "latency_s": 44.36,
+    "retry_count": 1,
+    "relevance_score": 0.65,
+    "retrieved_pages": [
+      2,
+      4,
+      3,
+      15,
+      13
+    ],
+    "correct": true,
+    "refused": false,
+    "false_refusal": false,
+    "citation_correct": true
+  },
+  {
+    "question": "If I get an approved dog, what is my total monthly payment?",
+    "answer_keys": [
+      "$1,725.00"
+    ],
+    "gold_page": 2,
+    "gold_section": "3.1+8.3",
+    "category": "multi_hop",
+    "lease_index": 2,
+    "gold_pages": [
+      2,
+      7
+    ],
+    "gold_clauses": [
+      "3.1 Monthly Rent: Tenant agrees to pay Landlord the sum of $1,675.00 per month as base rent, payable in advance on or before the first (1st) day of each calendar month.",
+      "8.3 Pet Rent: In addition to the pet deposit, monthly pet rent of $50.00 per approved animal shall be added to the base rent and is due with each rent payment."
+    ],
+    "gold_clause": "3.1 Monthly Rent: Tenant agrees to pay Landlord the sum of $1,675.00 per month as base rent, payable in advance on or before the first (1st) day of each calendar month.",
+    "answer": "According to Section 8.3 (Page 7), in addition to the base rent of $1,675.00 (Page 2), monthly pet rent of $50.00 per approved animal shall be added. Since you have 1 approved animal (a dog), the total monthly payment would be $1,675.00 (base rent) + $50.00 (pet rent) = $1,725.00.",
+    "latency_s": 45.66,
+    "retry_count": 1,
+    "relevance_score": 0.75,
+    "retrieved_pages": [
+      7,
+      15,
+      2,
+      13,
+      14
+    ],
+    "correct": true,
+    "refused": false,
+    "false_refusal": false,
+    "citation_correct": true
+  },
+  {
+    "question": "What is the landlord's mobile phone number?",
+    "answer_keys": [
+      "cannot find"
+    ],
+    "gold_page": -1,
+    "gold_section": "none",
+    "category": "unanswerable",
+    "lease_index": 0,
+    "gold_pages": [],
+    "gold_clauses": [],
+    "gold_clause": "",
+    "answer": "I cannot find this in the lease.",
+    "latency_s": 61.6,
+    "retry_count": 2,
+    "relevance_score": 0.25,
+    "retrieved_pages": [
+      1,
+      4,
+      11,
+      14,
+      10
+    ],
+    "correct": true,
+    "refused": true,
+    "false_refusal": false,
+    "citation_correct": null
+  },
+  {
+    "question": "Does the building have a swimming pool or fitness center?",
+    "answer_keys": [
+      "cannot find"
+    ],
+    "gold_page": -1,
+    "gold_section": "none",
+    "category": "unanswerable",
+    "lease_index": 0,
+    "gold_pages": [],
+    "gold_clauses": [],
+    "gold_clause": "",
+    "answer": "I cannot find this in the lease.",
+    "latency_s": 55.1,
+    "retry_count": 2,
+    "relevance_score": 0.4,
+    "retrieved_pages": [
+      16,
+      1,
+      5,
+      8,
+      6
+    ],
+    "correct": true,
+    "refused": true,
+    "false_refusal": false,
+    "citation_correct": null
+  },
+  {
+    "question": "What happens to the lease if there is an earthquake?",
+    "answer_keys": [
+      "cannot find"
+    ],
+    "gold_page": -1,
+    "gold_section": "none",
+    "category": "unanswerable",
+    "lease_index": 0,
+    "gold_pages": [],
+    "gold_clauses": [],
+    "gold_clause": "",
+    "answer": "I cannot find this in the lease.",
+    "latency_s": 53.15,
+    "retry_count": 2,
+    "relevance_score": 0.45,
+    "retrieved_pages": [
+      11,
+      13,
+      12,
+      8,
+      1
+    ],
+    "correct": true,
+    "refused": true,
+    "false_refusal": false,
+    "citation_correct": null
+  },
+  {
+    "question": "How much did the landlord pay for this property?",
+    "answer_keys": [
+      "cannot find"
+    ],
+    "gold_page": -1,
+    "gold_section": "none",
+    "category": "unanswerable",
+    "lease_index": 0,
+    "gold_pages": [],
+    "gold_clauses": [],
+    "gold_clause": "",
+    "answer": "I cannot find this in the lease.",
+    "latency_s": 31.27,
+    "retry_count": 1,
+    "relevance_score": 0.6,
+    "retrieved_pages": [
+      4,
+      2,
+      15,
+      14,
+      3
+    ],
+    "correct": true,
+    "refused": true,
+    "false_refusal": false,
+    "citation_correct": null
+  },
+  {
+    "question": "What is the landlord's mobile phone number?",
+    "answer_keys": [
+      "cannot find"
+    ],
+    "gold_page": -1,
+    "gold_section": "none",
+    "category": "unanswerable",
+    "lease_index": 1,
+    "gold_pages": [],
+    "gold_clauses": [],
+    "gold_clause": "",
+    "answer": "I cannot find this in the lease.",
+    "latency_s": 39.81,
+    "retry_count": 2,
+    "relevance_score": 0.4,
+    "retrieved_pages": [
+      8,
+      4,
+      7,
+      2,
+      5
+    ],
+    "correct": true,
+    "refused": true,
+    "false_refusal": false,
+    "citation_correct": null
+  },
+  {
+    "question": "Does the building have a swimming pool or fitness center?",
+    "answer_keys": [
+      "cannot find"
+    ],
+    "gold_page": -1,
+    "gold_section": "none",
+    "category": "unanswerable",
+    "lease_index": 1,
+    "gold_pages": [],
+    "gold_clauses": [],
+    "gold_clause": "",
+    "answer": "I cannot find this in the lease.",
+    "latency_s": 35.55,
+    "retry_count": 2,
+    "relevance_score": 0.4,
+    "retrieved_pages": [
+      16,
+      1,
+      8,
+      1,
+      13
+    ],
+    "correct": true,
+    "refused": true,
+    "false_refusal": false,
+    "citation_correct": null
+  },
+  {
+    "question": "What happens to the lease if there is an earthquake?",
+    "answer_keys": [
+      "cannot find"
+    ],
+    "gold_page": -1,
+    "gold_section": "none",
+    "category": "unanswerable",
+    "lease_index": 1,
+    "gold_pages": [],
+    "gold_clauses": [],
+    "gold_clause": "",
+    "answer": "I cannot find this in the lease.",
+    "latency_s": 35.39,
+    "retry_count": 2,
+    "relevance_score": 0.25,
+    "retrieved_pages": [
+      13,
+      16,
+      1,
+      10,
+      12
+    ],
+    "correct": true,
+    "refused": true,
+    "false_refusal": false,
+    "citation_correct": null
+  },
+  {
+    "question": "How much did the landlord pay for this property?",
+    "answer_keys": [
+      "cannot find"
+    ],
+    "gold_page": -1,
+    "gold_section": "none",
+    "category": "unanswerable",
+    "lease_index": 1,
+    "gold_pages": [],
+    "gold_clauses": [],
+    "gold_clause": "",
+    "answer": "I cannot find this in the lease.",
+    "latency_s": 20.07,
+    "retry_count": 1,
+    "relevance_score": 0.8,
+    "retrieved_pages": [
+      4,
+      2,
+      15,
+      13,
+      3
+    ],
+    "correct": true,
+    "refused": true,
+    "false_refusal": false,
+    "citation_correct": null
+  },
+  {
+    "question": "What is the landlord's mobile phone number?",
+    "answer_keys": [
+      "cannot find"
+    ],
+    "gold_page": -1,
+    "gold_section": "none",
+    "category": "unanswerable",
+    "lease_index": 2,
+    "gold_pages": [],
+    "gold_clauses": [],
+    "gold_clause": "",
+    "answer": "I cannot find this in the lease.",
+    "latency_s": 34.98,
+    "retry_count": 2,
+    "relevance_score": 0.4,
+    "retrieved_pages": [
+      2,
+      4,
+      8,
+      1,
+      5
+    ],
+    "correct": true,
+    "refused": true,
+    "false_refusal": false,
+    "citation_correct": null
+  },
+  {
+    "question": "Does the building have a swimming pool or fitness center?",
+    "answer_keys": [
+      "cannot find"
+    ],
+    "gold_page": -1,
+    "gold_section": "none",
+    "category": "unanswerable",
+    "lease_index": 2,
+    "gold_pages": [],
+    "gold_clauses": [],
+    "gold_clause": "",
+    "answer": "I cannot find this in the lease.",
+    "latency_s": 35.53,
+    "retry_count": 2,
+    "relevance_score": 0.0,
+    "retrieved_pages": [
+      16,
+      8,
+      8,
+      6,
+      1
+    ],
+    "correct": true,
+    "refused": true,
+    "false_refusal": false,
+    "citation_correct": null
+  },
+  {
+    "question": "What happens to the lease if there is an earthquake?",
+    "answer_keys": [
+      "cannot find"
+    ],
+    "gold_page": -1,
+    "gold_section": "none",
+    "category": "unanswerable",
+    "lease_index": 2,
+    "gold_pages": [],
+    "gold_clauses": [],
+    "gold_clause": "",
+    "answer": "I cannot find this in the lease.",
+    "latency_s": 40.27,
+    "retry_count": 2,
+    "relevance_score": 0.45,
+    "retrieved_pages": [
+      1,
+      12,
+      1,
+      8,
+      16
+    ],
+    "correct": true,
+    "refused": true,
+    "false_refusal": false,
+    "citation_correct": null
+  },
+  {
+    "question": "How much did the landlord pay for this property?",
+    "answer_keys": [
+      "cannot find"
+    ],
+    "gold_page": -1,
+    "gold_section": "none",
+    "category": "unanswerable",
+    "lease_index": 2,
+    "gold_pages": [],
+    "gold_clauses": [],
+    "gold_clause": "",
+    "answer": "I cannot find this in the lease.",
+    "latency_s": 40.37,
+    "retry_count": 2,
+    "relevance_score": 0.95,
+    "retrieved_pages": [
+      2,
+      15,
+      4,
+      3,
+      8
+    ],
+    "correct": true,
+    "refused": true,
+    "false_refusal": false,
+    "citation_correct": null
+  },
+  {
+    "question": "What is the landlord's mobile phone number?",
+    "answer_keys": [
+      "cannot find"
+    ],
+    "gold_page": -1,
+    "gold_section": "none",
+    "category": "unanswerable",
+    "lease_index": 3,
+    "gold_pages": [],
+    "gold_clauses": [],
+    "gold_clause": "",
+    "answer": "I cannot find this in the lease.",
+    "latency_s": 36.51,
+    "retry_count": 2,
+    "relevance_score": 0.0,
+    "retrieved_pages": [
+      8,
+      4,
+      7,
+      2,
+      3
+    ],
+    "correct": true,
+    "refused": true,
+    "false_refusal": false,
+    "citation_correct": null
+  },
+  {
+    "question": "Does the building have a swimming pool or fitness center?",
+    "answer_keys": [
+      "cannot find"
+    ],
+    "gold_page": -1,
+    "gold_section": "none",
+    "category": "unanswerable",
+    "lease_index": 3,
+    "gold_pages": [],
+    "gold_clauses": [],
+    "gold_clause": "",
+    "answer": "I cannot find this in the lease.",
+    "latency_s": 35.28,
+    "retry_count": 2,
+    "relevance_score": 0.0,
+    "retrieved_pages": [
+      1,
+      14,
+      16,
+      10,
+      2
+    ],
+    "correct": true,
+    "refused": true,
+    "false_refusal": false,
+    "citation_correct": null
+  },
+  {
+    "question": "What happens to the lease if there is an earthquake?",
+    "answer_keys": [
+      "cannot find"
+    ],
+    "gold_page": -1,
+    "gold_section": "none",
+    "category": "unanswerable",
+    "lease_index": 3,
+    "gold_pages": [],
+    "gold_clauses": [],
+    "gold_clause": "",
+    "answer": "I cannot find this in the lease.",
+    "latency_s": 25.57,
+    "retry_count": 2,
+    "relevance_score": 0.15,
+    "retrieved_pages": [
+      13,
+      12,
+      3,
+      16,
+      13
+    ],
+    "correct": true,
+    "refused": true,
+    "false_refusal": false,
+    "citation_correct": null
+  }
+]
