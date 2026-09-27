@@ -1,0 +1,291 @@
+{
+  "lease": {
+    "id": "sample-lease",
+    "filename": "Residential Lease - 702 Everly Terrace, Unit 39.pdf",
+    "status": "completed",
+    "pageCount": 16,
+    "createdAt": "2026-09-06T00:00:00Z"
+  },
+  "suggested": [
+    "What is the monthly base rent?",
+    "What is the monthly pet rent, as opposed to the pet deposit?",
+    "How much is the returned check fee, not the late fee?",
+    "If I stay past the expiration date without consent, what is the monthly rent?",
+    "Do I have to pay a pet deposit for a service animal?",
+    "Does the building have a swimming pool or fitness center?"
+  ],
+  "answers": [
+    {
+      "question": "How much is the returned check fee, not the late fee?",
+      "category": "adversarial",
+      "answer": "$25.00 (Page 3)",
+      "citations": [
+        {
+          "chunkId": "page-3-0",
+          "pageNumber": 3,
+          "sectionTitle": "Section 4.3",
+          "snippet": "4.3 Returned Payments: Any payment returned for insufficient funds shall incur a separate service charge of $25.00, which is distinct from and in addition to any late charge assessed under Section 4.1."
+        }
+      ],
+      "latencySeconds": 70.21,
+      "retrievalPasses": 2
+    },
+    {
+      "question": "What is the monthly pet rent, as opposed to the pet deposit?",
+      "category": "adversarial",
+      "answer": "$35.00 per approved animal (Page 7, Section 8.3).",
+      "citations": [
+        {
+          "chunkId": "page-7-0",
+          "pageNumber": 7,
+          "sectionTitle": "Section 8.3",
+          "snippet": "8.3 Pet Rent: In addition to the pet deposit, monthly pet rent of $35.00 per approved animal shall be added to the base rent and is due with each rent payment."
+        }
+      ],
+      "latencySeconds": 44.65,
+      "retrievalPasses": 1
+    },
+    {
+      "question": "Besides the one-time late charge, what is the additional daily charge for unpaid rent?",
+      "category": "adversarial",
+      "answer": "An additional $5.00 per day shall accrue for each day rent remains unpaid after the 7th day (Page 3, Section 4.2).",
+      "citations": [
+        {
+          "chunkId": "page-3-0",
+          "pageNumber": 3,
+          "sectionTitle": "Section 4.2",
+          "snippet": "4.2 Additional Daily Charge: In addition to the late charge in Section 4.1, an additional $5.00 per day shall accrue for each day rent remains unpaid after the 7th day."
+        }
+      ],
+      "latencySeconds": 36.79,
+      "retrievalPasses": 1
+    },
+    {
+      "question": "Do I have to pay a pet deposit for a service animal?",
+      "category": "adversarial",
+      "answer": "No, you are exempt from paying a pet deposit and pet rent for a service animal, as per Section 8.4: \"Service animals and assistance animals required by applicable fair housing law are exempt from the deposit, pet rent, and weight restrictions in this Section.\" (Page 7)",
+      "citations": [
+        {
+          "chunkId": "page-7-0",
+          "pageNumber": 7,
+          "sectionTitle": "Section 8.4",
+          "snippet": "8.4 Restrictions: No individual animal may exceed 35 pounds at maturity. Service animals and assistance animals required by applicable fair housing law are exempt from the deposit, pet rent, and weight restrictions in this Section."
+        }
+      ],
+      "latencySeconds": 40.94,
+      "retrievalPasses": 1
+    },
+    {
+      "question": "What is the monthly base rent?",
+      "category": "lookup",
+      "answer": "$2,600.00 (Page 2).",
+      "citations": [
+        {
+          "chunkId": "page-2-0",
+          "pageNumber": 2,
+          "sectionTitle": "Section 3.1",
+          "snippet": "3.1 Monthly Rent: Tenant agrees to pay Landlord the sum of $2,600.00 per month as base rent, payable in advance on or before the first (1st) day of each calendar month."
+        }
+      ],
+      "latencySeconds": 31.36,
+      "retrievalPasses": 1
+    },
+    {
+      "question": "When is rent due each month?",
+      "category": "lookup",
+      "answer": "Rent is due on or before the first (1st) day of each calendar month. (Page 2)",
+      "citations": [
+        {
+          "chunkId": "page-2-0",
+          "pageNumber": 2,
+          "sectionTitle": "Section 3.1",
+          "snippet": "3.1 Monthly Rent: Tenant agrees to pay Landlord the sum of $2,600.00 per month as base rent, payable in advance on or before the first (1st) day of each calendar month."
+        }
+      ],
+      "latencySeconds": 29.69,
+      "retrievalPasses": 1
+    },
+    {
+      "question": "How much is the security deposit?",
+      "category": "lookup",
+      "answer": "The security deposit is $3,900.00. (Page 4)",
+      "citations": [
+        {
+          "chunkId": "page-4-0",
+          "pageNumber": 4,
+          "sectionTitle": "Section 5.1",
+          "snippet": "5.1 Amount: Upon execution of this Agreement, Tenant shall deposit with Landlord the sum of $3,900.00 as a security deposit."
+        }
+      ],
+      "latencySeconds": 30.47,
+      "retrievalPasses": 1
+    },
+    {
+      "question": "How many days does the landlord have to return my security deposit?",
+      "category": "lookup",
+      "answer": "14 days after Tenant vacates and returns all keys. (Page 4)",
+      "citations": [
+        {
+          "chunkId": "page-4-0",
+          "pageNumber": 4,
+          "sectionTitle": "Section 5.3",
+          "snippet": "5.3 Return: Landlord shall return the security deposit, less any lawful deductions, within 14 days after Tenant vacates and returns all keys."
+        }
+      ],
+      "latencySeconds": 27.84,
+      "retrievalPasses": 1
+    },
+    {
+      "question": "What is the late fee for paying rent late?",
+      "category": "lookup",
+      "answer": "A late charge of $75.00 shall be incurred for rent received after the 7th day of the month. In addition, an additional $5.00 per day shall accrue for each day rent remains unpaid after the 7th day. (Page 3)",
+      "citations": [
+        {
+          "chunkId": "page-3-0",
+          "pageNumber": 3,
+          "sectionTitle": "Section 4.1",
+          "snippet": "4.1 Grace Period: Rent received after the 7th day of the month shall be considered late and shall incur a one-time late charge of $75.00."
+        }
+      ],
+      "latencySeconds": 26.81,
+      "retrievalPasses": 1
+    },
+    {
+      "question": "How many people are allowed to live in the unit?",
+      "category": "lookup",
+      "answer": "4 persons without Landlord's prior written consent. (Page 6)",
+      "citations": [
+        {
+          "chunkId": "page-6-0",
+          "pageNumber": 6,
+          "sectionTitle": "Section 7.1",
+          "snippet": "7.1 Permitted Occupants: The Premises shall be occupied by no more than 4 persons without Landlord's prior written consent."
+        }
+      ],
+      "latencySeconds": 23.43,
+      "retrievalPasses": 1
+    },
+    {
+      "question": "How much is the pet deposit?",
+      "category": "lookup",
+      "answer": "$200.00 (Page 7).",
+      "citations": [
+        {
+          "chunkId": "page-7-0",
+          "pageNumber": 7,
+          "sectionTitle": "Section 8.2",
+          "snippet": "8.2 Pet Deposit: A refundable pet deposit of $200.00 is required per approved animal at the time the Pet Addendum is signed."
+        }
+      ],
+      "latencySeconds": 23.96,
+      "retrievalPasses": 1
+    },
+    {
+      "question": "What is the maximum weight allowed for a pet?",
+      "category": "lookup",
+      "answer": "No individual animal may exceed 35 pounds at maturity. (Page 7)",
+      "citations": [
+        {
+          "chunkId": "page-7-0",
+          "pageNumber": 7,
+          "sectionTitle": "Section 8.4",
+          "snippet": "8.4 Restrictions: No individual animal may exceed 35 pounds at maturity. Service animals and assistance animals required by applicable fair housing law are exempt from the deposit, pet rent, and weight restrictions in this Section."
+        }
+      ],
+      "latencySeconds": 48.56,
+      "retrievalPasses": 2
+    },
+    {
+      "question": "How many parking spaces am I assigned?",
+      "category": "lookup",
+      "answer": "1 parking space(s) for the duration of the tenancy. (Page 14)",
+      "citations": [
+        {
+          "chunkId": "page-14-0",
+          "pageNumber": 14,
+          "sectionTitle": "Section 17.1",
+          "snippet": "17.1 Assigned Spaces: Tenant is assigned 1 parking space(s) for the duration of the tenancy."
+        }
+      ],
+      "latencySeconds": 48.38,
+      "retrievalPasses": 2
+    },
+    {
+      "question": "How many days do I have to cure a default?",
+      "category": "lookup",
+      "answer": "You have 10 days from delivery of written notice from Landlord to cure the default or vacate the Premises. (Page 13)",
+      "citations": [
+        {
+          "chunkId": "page-13-0",
+          "pageNumber": 13,
+          "sectionTitle": "Section 15.2",
+          "snippet": "15.2 Cure Period: Upon default, Landlord shall deliver written notice specifying the default, and Tenant shall have 10 days from delivery of such notice to cure the default or vacate the Premises."
+        }
+      ],
+      "latencySeconds": 25.64,
+      "retrievalPasses": 1
+    },
+    {
+      "question": "What is the total early termination fee in dollars?",
+      "category": "multi_hop",
+      "answer": "The early termination fee is equal to 1 month(s) of base rent, being $2,600.00. (Page 11)",
+      "citations": [
+        {
+          "chunkId": "page-11-0",
+          "pageNumber": 11,
+          "sectionTitle": "Section 13.2",
+          "snippet": "13.2 Termination Fee: In addition to the notice required in Section 13.1, Tenant shall pay an early termination fee equal to 1 month(s) of base rent, being $2,600.00."
+        }
+      ],
+      "latencySeconds": 38.69,
+      "retrievalPasses": 1
+    },
+    {
+      "question": "If I stay past the expiration date without consent, what is the monthly rent?",
+      "category": "multi_hop",
+      "answer": "The monthly rent in this scenario is $3,250.00, which is 125% of the base monthly rent of $2,600.00. (Page 12, Section 14.3)",
+      "citations": [
+        {
+          "chunkId": "page-12-0",
+          "pageNumber": 12,
+          "sectionTitle": "Section 14.3",
+          "snippet": "14.3 Holdover: If Tenant remains in possession after expiration without Landlord's written consent, Tenant shall pay holdover rent equal to 125% of the base monthly rent, being $3,250.00 per month."
+        }
+      ],
+      "latencySeconds": 31.97,
+      "retrievalPasses": 1
+    },
+    {
+      "question": "What is the landlord's mobile phone number?",
+      "category": "unanswerable",
+      "answer": "I cannot find this in the lease.",
+      "citations": [],
+      "latencySeconds": 61.6,
+      "retrievalPasses": 2
+    },
+    {
+      "question": "Does the building have a swimming pool or fitness center?",
+      "category": "unanswerable",
+      "answer": "I cannot find this in the lease.",
+      "citations": [],
+      "latencySeconds": 55.1,
+      "retrievalPasses": 2
+    },
+    {
+      "question": "What happens to the lease if there is an earthquake?",
+      "category": "unanswerable",
+      "answer": "I cannot find this in the lease.",
+      "citations": [],
+      "latencySeconds": 53.15,
+      "retrievalPasses": 2
+    },
+    {
+      "question": "How much did the landlord pay for this property?",
+      "category": "unanswerable",
+      "answer": "I cannot find this in the lease.",
+      "citations": [],
+      "latencySeconds": 31.27,
+      "retrievalPasses": 1
+    }
+  ]
+}
