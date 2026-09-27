@@ -1,5 +1,5 @@
 import uuid
-from datetime import datetime
+from datetime import UTC, datetime
 
 from pgvector.sqlalchemy import Vector
 from sqlalchemy import Column, DateTime, ForeignKey, String
@@ -23,9 +23,10 @@ class LeaseDocument(Base):
     status = Column(String, default="processing") # "processing", "completed", "failed"
     
     # Store extra flexible data (like page count, file size) in a JSON column
-    metadata_ = Column("metadata", JSONB, default={}) 
+    metadata_ = Column("metadata", JSONB, default=dict) 
     
-    created_at = Column(DateTime, default=datetime.utcnow)
+    # Column is TIMESTAMP WITHOUT TIME ZONE, so store naive UTC to match it.
+    created_at = Column(DateTime, default=lambda: datetime.now(UTC).replace(tzinfo=None))
 
     # Establish a relationship with the chunks (One Lease has Many Chunks)
     chunks = relationship("LeaseChunk", back_populates="document", cascade="all, delete-orphan")
@@ -50,7 +51,7 @@ class LeaseChunk(Base):
     embedding = Column(Vector(settings.VECTOR_DIMENSION), nullable=False)
     
     # Extra data like {"page_number": 4, "section_title": "Pets"}
-    chunk_metadata = Column(JSONB, default={})
+    chunk_metadata = Column(JSONB, default=dict)
 
     # Link back to the parent Document
     document = relationship("LeaseDocument", back_populates="chunks")
