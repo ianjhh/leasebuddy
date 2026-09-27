@@ -1,6 +1,7 @@
 # This file makes backend/app/rag/ a Python package.
 
 from llama_index.embeddings.ollama import OllamaEmbedding
+
 from app.config import settings
 
 embedding_model = OllamaEmbedding(

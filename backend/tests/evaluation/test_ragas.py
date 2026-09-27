@@ -1,8 +1,6 @@
 import json
 
-import pytest
-
-from app.rag.prompts import build_context_string, QA_SYSTEM_PROMPT
+from app.rag.prompts import QA_SYSTEM_PROMPT, build_context_string
 
 # In a real environment with GPU/Ollama running, we would use:
 # from ragas import evaluate

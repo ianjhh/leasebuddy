@@ -1,12 +1,12 @@
 # backend/app/services/document_processor.py
 
+import asyncio
 import logging
 
 import fitz  # PyMuPDF
 
 logger = logging.getLogger(__name__)
 
-import asyncio
 
 def _extract_pdf_pages(file_bytes: bytes) -> list[dict]:
     """Synchronous PDF text extraction — runs in a thread pool."""

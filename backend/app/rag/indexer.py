@@ -6,7 +6,6 @@ import uuid
 from llama_index.core.node_parser import SentenceSplitter
 from sqlalchemy.ext.asyncio import AsyncSession
 
-from app.config import settings
 from app.models.lease import LeaseChunk
 from app.rag import embedding_model
 

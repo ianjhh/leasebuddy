@@ -3,7 +3,6 @@
 from sqlalchemy import text
 from sqlalchemy.ext.asyncio import AsyncSession
 
-from app.config import settings
 from app.rag import embedding_model
 
 

@@ -6,17 +6,21 @@ from typing import Any
 from uuid import UUID
 
 import httpx
-from tenacity import retry, stop_after_attempt, wait_exponential, retry_if_exception_type
-
-logger = logging.getLogger(__name__)
-
 from langgraph.graph import END, StateGraph
 from llama_index.llms.ollama import Ollama
 from pydantic import BaseModel, Field
+from tenacity import (
+    retry,
+    retry_if_exception_type,
+    stop_after_attempt,
+    wait_exponential,
+)
 
-from app.db.session import AsyncSessionLocal
 from app.config import settings
+from app.db.session import AsyncSessionLocal
 from app.rag.retriever import hybrid_search
+
+logger = logging.getLogger(__name__)
 
 
 class ChunkResult(BaseModel):

@@ -8,10 +8,8 @@ from fastapi import APIRouter, WebSocket, WebSocketDisconnect
 from llama_index.llms.ollama import Ollama
 
 from app.config import settings
-from app.db.session import AsyncSessionLocal
-from app.rag.retriever import hybrid_search
-from app.rag.prompts import QA_SYSTEM_PROMPT, build_context_string
 from app.rag.agent import run_agent
+from app.rag.prompts import QA_SYSTEM_PROMPT, build_context_string
 
 logger = logging.getLogger(__name__)
 

@@ -1,11 +1,13 @@
 import { useState, useCallback, useEffect } from "react";
 import { ChatMessage } from "@/lib/types";
 import { useWebSocket } from "./useWebSocket";
-export function useChat(leaseId: string | null) {
-  const generateId = () => Math.random().toString(36).substring(2, 9);
 
-  const [messages, setMessages] = useState<ChatMessage[]>([{
-    id: generateId(),
+// Only called from event handlers, never during render.
+const generateId = () => Math.random().toString(36).substring(2, 9);
+
+export function useChat(leaseId: string | null) {
+  const [messages, setMessages] = useState<ChatMessage[]>(() => [{
+    id: "greeting",
     role: "assistant",
     content: "Hi there! 👋 Ask me anything about the document you just uploaded!",
     createdAt: new Date().toISOString(),

@@ -1,8 +1,8 @@
 "use client";
 
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useRef, useState, useSyncExternalStore } from "react";
 import { useParams, useRouter } from "next/navigation";
-import { ArrowLeft, FileText, AlertCircle, Sparkles } from "lucide-react";
+import { ArrowLeft, FileText, AlertCircle } from "lucide-react";
 import { useChat } from "@/hooks/useChat";
 import { getLease } from "@/lib/api";
 import { Lease } from "@/lib/types";
@@ -10,22 +10,23 @@ import { MessageBubble } from "@/components/MessageBubble";
 import { ChatInput } from "@/components/ChatInput";
 import { Button } from "@/components/ui/Button";
 
+// Nothing to subscribe to: the value only differs between server and client.
+const subscribeToNothing = () => () => {};
+
 export default function ChatPage() {
   const params = useParams(); 
   const router = useRouter();
   const leaseId = params.leaseId as string;
   
-  const [isMounted, setIsMounted] = useState(false);
+  // false while rendering on the server, true in the browser, so the page
+  // renders nothing until hydration and avoids a mismatch.
+  const isMounted = useSyncExternalStore(subscribeToNothing, () => true, () => false);
   const [lease, setLease] = useState<Lease | null>(null);
   const [error, setError] = useState<string | null>(null);
 
   const { messages, isStreaming, isThinking, sendQuery, connectionState } = useChat(leaseId);
   
   const messagesEndRef = useRef<HTMLDivElement>(null);
-
-  useEffect(() => {
-    setIsMounted(true);
-  }, []);
 
   useEffect(() => {
     async function loadLease() {
