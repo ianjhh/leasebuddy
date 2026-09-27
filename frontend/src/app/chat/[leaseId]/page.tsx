@@ -19,7 +19,7 @@ export default function ChatPage() {
   const [lease, setLease] = useState<Lease | null>(null);
   const [error, setError] = useState<string | null>(null);
 
-  const { messages, isStreaming, sendQuery, connectionState } = useChat(leaseId);
+  const { messages, isStreaming, isThinking, sendQuery, connectionState } = useChat(leaseId);
   
   const messagesEndRef = useRef<HTMLDivElement>(null);
 
@@ -95,27 +95,7 @@ export default function ChatPage() {
 
       <div className="flex-1 overflow-y-auto p-4 sm:p-6 scroll-smooth">
         <div className="max-w-3xl mx-auto">
-          {messages.length === 0 ? (
-            <div className="flex flex-col items-center justify-center h-[50vh] text-center animate-fade-in opacity-50">
-              <Sparkles className="w-12 h-12 text-gray-500 mb-4" />
-              <h2 className="text-xl font-semibold mb-2">Ask about your lease</h2>
-              <p className="text-sm text-gray-400 mb-8 max-w-md">
-                Try asking about pets, breaking the lease early, or maintenance responsibilities.
-              </p>
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 w-full max-w-lg">
-                {["Are pets allowed?", "What is the penalty for breaking the lease early?", "Who is responsible for lawn care?", "When is rent due?"].map((q, i) => (
-                  <button 
-                    key={i}
-                    onClick={() => sendQuery(q)}
-                    className="p-3 text-sm text-left bg-surface border border-surface-border rounded-xl hover:bg-white/5 transition-colors"
-                  >
-                    &quot;{q}&quot;
-                  </button>
-                ))}
-              </div>
-            </div>
-          ) : (
-            <div className="pb-4">
+          <div className="pb-4">
               {messages.map((msg, index) => (
                 <MessageBubble 
                   key={msg.id} 
@@ -123,9 +103,19 @@ export default function ChatPage() {
                   isStreaming={isStreaming && index === messages.length - 1 && msg.role === "assistant"}
                 />
               ))}
-              <div ref={messagesEndRef} />
+              {isThinking && (
+                <div className="flex justify-start w-full mt-4 animate-pulse">
+                  <div className="bg-surface rounded-2xl rounded-tl-sm px-5 py-4 max-w-[85%] border border-surface-border">
+                    <div className="flex space-x-2 items-center h-4">
+                      <div className="w-2 h-2 bg-gray-500 rounded-full animate-bounce [animation-delay:-0.3s]"></div>
+                      <div className="w-2 h-2 bg-gray-500 rounded-full animate-bounce [animation-delay:-0.15s]"></div>
+                      <div className="w-2 h-2 bg-gray-500 rounded-full animate-bounce"></div>
+                    </div>
+                  </div>
+                </div>
+              )}
+              <div ref={messagesEndRef} className="h-4" />
             </div>
-          )}
         </div>
       </div>
 
@@ -133,7 +123,7 @@ export default function ChatPage() {
         <div className="max-w-3xl mx-auto">
           <ChatInput 
             onSend={sendQuery} 
-            disabled={isStreaming || connectionState !== "connected"} 
+            disabled={isStreaming || isThinking || connectionState !== "connected"} 
           />
           <p className="text-center text-xs text-gray-500 mt-3">
             AI can make mistakes. Always verify important legal details in the original document.

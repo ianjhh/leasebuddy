@@ -67,8 +67,8 @@ export function useWebSocket(leaseId: string | null) {
       }, backoffMs);
     };
 
-    ws.onerror = () => {
-      console.error("WebSocket error occurred");
+    ws.onerror = (error) => {
+      console.warn("WebSocket error occurred", error);
     };
   }, [leaseId]);
 

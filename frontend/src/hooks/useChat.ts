@@ -1,18 +1,24 @@
 import { useState, useCallback, useEffect } from "react";
 import { ChatMessage } from "@/lib/types";
 import { useWebSocket } from "./useWebSocket";
-
 export function useChat(leaseId: string | null) {
-  const [messages, setMessages] = useState<ChatMessage[]>([]);
+  const generateId = () => Math.random().toString(36).substring(2, 9);
+
+  const [messages, setMessages] = useState<ChatMessage[]>([{
+    id: generateId(),
+    role: "assistant",
+    content: "Hi there! 👋 Ask me anything about the document you just uploaded!",
+    createdAt: new Date().toISOString(),
+  }]);
   const [isStreaming, setIsStreaming] = useState(false);
+  const [isThinking, setIsThinking] = useState(false);
   
   const { connectionState, sendMessage, onMessage } = useWebSocket(leaseId);
-
-  const generateId = () => Math.random().toString(36).substring(2, 9);
 
   useEffect(() => {
     onMessage((msg) => {
       if (msg.type === "token") {
+        setIsThinking(false);
         setIsStreaming(true);
         setMessages((prev) => {
           const lastMsg = prev[prev.length - 1];
@@ -49,9 +55,11 @@ export function useChat(leaseId: string | null) {
       } 
       else if (msg.type === "done") {
         setIsStreaming(false);
+        setIsThinking(false);
       } 
       else if (msg.type === "error") {
         setIsStreaming(false);
+        setIsThinking(false);
         const errorMsg: ChatMessage = {
           id: generateId(),
           role: "assistant",
@@ -75,11 +83,13 @@ export function useChat(leaseId: string | null) {
     setMessages((prev) => [...prev, userMsg]);
 
     sendMessage(query);
+    setIsThinking(true);
   }, [sendMessage]);
 
   return {
     messages,
     isStreaming,
+    isThinking,
     connectionState,
     sendQuery,
   };
