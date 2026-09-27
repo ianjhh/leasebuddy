@@ -2,7 +2,7 @@ import uuid
 from datetime import UTC, datetime
 
 from pgvector.sqlalchemy import Vector
-from sqlalchemy import Column, DateTime, ForeignKey, String
+from sqlalchemy import Column, DateTime, ForeignKey, Index, String
 from sqlalchemy.dialects.postgresql import JSONB, UUID
 from sqlalchemy.orm import relationship
 
@@ -55,3 +55,14 @@ class LeaseChunk(Base):
 
     # Link back to the parent Document
     document = relationship("LeaseDocument", back_populates="chunks")
+
+
+# HNSW index for fast approximate nearest-neighbor search on embeddings.
+# vector_cosine_ops matches the <=> (cosine distance) operator used in retriever.py.
+Index(
+    "ix_chunk_embedding_hnsw",
+    LeaseChunk.embedding,
+    postgresql_using="hnsw",
+    postgresql_with={"m": 16, "ef_construction": 64},
+    postgresql_ops={"embedding": "vector_cosine_ops"},
+)
