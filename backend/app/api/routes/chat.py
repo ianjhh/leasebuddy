@@ -1,21 +1,34 @@
 # backend/app/api/routes/chat.py
 
-import asyncio
 import json
 import logging
 from uuid import UUID
 
 from fastapi import APIRouter, WebSocket, WebSocketDisconnect
+from llama_index.llms.ollama import Ollama
 
-from app.services.chat_service import generate_chat_response
+from app.config import settings
+from app.db.session import AsyncSessionLocal
+from app.rag.retriever import hybrid_search
+from app.rag.prompts import QA_SYSTEM_PROMPT, build_context_string
+from app.rag.agent import run_agent
 
 logger = logging.getLogger(__name__)
 
 router = APIRouter()
 
+llm = Ollama(
+    model=settings.LLM_MODEL,
+    base_url=settings.OLLAMA_BASE_URL,
+    request_timeout=120.0,
+    context_window=4096,
+    additional_kwargs={"num_ctx": 4096},
+)
+
+
 @router.websocket("/ws/chat/{lease_id}")
 async def websocket_chat(websocket: WebSocket, lease_id: UUID) -> None:
-    """WebSocket endpoint for real-time chat with a lease."""
+    """WebSocket endpoint for real-time chat with a lease using true LLM token streaming."""
     await websocket.accept()
 
     try:
@@ -25,22 +38,33 @@ async def websocket_chat(websocket: WebSocket, lease_id: UUID) -> None:
 
             if data.get("type") == "query":
                 user_query = data.get("content")
-                session_id = data.get("session_id", "default")
 
-                response = await generate_chat_response(lease_id, user_query, session_id)
-                answer_text = response["answer"]
+                # Run the agent to get retrieval + relevance checking
+                final_state = await run_agent(lease_id, user_query)
 
-                words = answer_text.split(" ")
-                for word in words:
+                # Build context from retrieved chunks
+                chunks_as_dicts = [
+                    {"page": c.page, "text": c.text}
+                    for c in final_state.retrieved_chunks
+                ]
+                context_string = build_context_string(chunks_as_dicts)
+                system_prompt = QA_SYSTEM_PROMPT.format(context_string=context_string)
+
+                # Stream tokens directly from the LLM
+                prompt = f"{system_prompt}\n\nQuestion: {user_query}"
+                async for token_response in await llm.astream_complete(prompt):
                     await websocket.send_json({
                         "type": "token",
-                        "content": word + " "
+                        "content": token_response.delta,
                     })
-                    await asyncio.sleep(0.05)
 
+                # Send citations after streaming completes
                 await websocket.send_json({
                     "type": "citations",
-                    "data": response["citations"]
+                    "data": [
+                        {"page_num": c.page, "snippet": c.text}
+                        for c in final_state.retrieved_chunks
+                    ],
                 })
 
                 await websocket.send_json({"type": "done"})
@@ -49,8 +73,7 @@ async def websocket_chat(websocket: WebSocket, lease_id: UUID) -> None:
         logger.info("Client disconnected from lease %s", lease_id)
     except Exception:
         logger.exception("WebSocket error for lease %s", lease_id)
-        # BEST PRACTICE: Do not leak the raw exception (str(e)) to the frontend over WebSockets.
         await websocket.send_json({
             "type": "error",
-            "message": "An internal error occurred. Please try again."
+            "message": "An internal error occurred. Please try again.",
         })
