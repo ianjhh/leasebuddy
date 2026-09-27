@@ -8,7 +8,7 @@ class Settings(BaseSettings):
     # App Settings
     PROJECT_NAME: str = "LeaseBuddy API"
     ENVIRONMENT: str = "development"
-    API_SECRET_KEY: str = "change_me_in_prod"
+    API_SECRET_KEY: str  # No default — must be set via env var
 
     # Server Settings
     CORS_ORIGINS: list[str] = ["http://localhost:3000"]
@@ -24,6 +24,10 @@ class Settings(BaseSettings):
     LLM_MODEL: str = "llama3.1:8b"
     EMBEDDING_MODEL: str = "nomic-embed-text"
     VECTOR_DIMENSION: int = 768  # nomic-embed-text outputs 768-dimensional vectors
+
+    # AWS Settings
+    S3_BUCKET_NAME: str = ""
+    STEP_FUNCTION_ARN: str = ""
 
     model_config = SettingsConfigDict(env_file="../.env", extra="ignore")
 
