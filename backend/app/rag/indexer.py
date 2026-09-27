@@ -4,18 +4,14 @@ import logging
 import uuid
 
 from llama_index.core.node_parser import SentenceSplitter
-from llama_index.embeddings.ollama import OllamaEmbedding
 from sqlalchemy.ext.asyncio import AsyncSession
 
 from app.config import settings
 from app.models.lease import LeaseChunk
+from app.rag import embedding_model
 
 logger = logging.getLogger(__name__)
 
-embedding_model = OllamaEmbedding(
-    model_name=settings.EMBEDDING_MODEL,
-    base_url=settings.OLLAMA_BASE_URL,
-)
 
 async def index_document(
     lease_id: str,
