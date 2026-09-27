@@ -14,10 +14,10 @@ textract = boto3.client('textract', endpoint_url=os.getenv('AWS_ENDPOINT_URL'))
 
 def get_db_connection():
     return psycopg2.connect(
-        dbname=os.getenv("DB_NAME", "leasebuddy"),
-        user=os.getenv("DB_USER", "postgres"),
-        password=os.getenv("DB_PASSWORD", "postgres"),
-        host=os.getenv("DB_HOST", "host.docker.internal"),
+        dbname=os.environ["DB_NAME"],
+        user=os.environ["DB_USER"],
+        password=os.environ["DB_PASSWORD"],
+        host=os.environ["DB_HOST"],
         port=os.getenv("DB_PORT", "5432")
     )
 

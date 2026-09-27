@@ -1,5 +1,5 @@
 import os
-import requests
+import httpx
 import psycopg2
 import json
 from llama_index.core.node_parser import SentenceSplitter
@@ -10,20 +10,21 @@ logger.setLevel(logging.INFO)
 
 def get_db_connection():
     return psycopg2.connect(
-        dbname=os.getenv("DB_NAME", "leasebuddy"),
-        user=os.getenv("DB_USER", "postgres"),
-        password=os.getenv("DB_PASSWORD", "postgres"),
-        host=os.getenv("DB_HOST", "host.docker.internal"),
+        dbname=os.environ["DB_NAME"],
+        user=os.environ["DB_USER"],
+        password=os.environ["DB_PASSWORD"],
+        host=os.environ["DB_HOST"],
         port=os.getenv("DB_PORT", "5432")
     )
 
 def get_embedding(text):
-    ollama_host = os.getenv("OLLAMA_HOST", "http://host.docker.internal:11434")
+    ollama_host = os.environ["OLLAMA_HOST"]
     model_name = os.getenv("EMBEDDING_MODEL", "nomic-embed-text")
-    response = requests.post(f"{ollama_host}/api/embeddings", json={
+    response = httpx.post(f"{ollama_host}/api/embeddings", json={
         "model": model_name,
         "prompt": text
-    })
+    }, timeout=120.0)
+    response.raise_for_status()
     return response.json()['embedding']
 
 def handler(event, context):
@@ -40,15 +41,24 @@ def handler(event, context):
         
     metadata = result[0]
     full_text = metadata.get("extracted_text", "")
+    page_count = metadata.get("page_count", 1)
     
     splitter = SentenceSplitter(chunk_size=512, chunk_overlap=50)
     chunks = splitter.split_text(full_text)
+    
+    # Estimate page number for each chunk based on position in the full text
+    chars_per_page = max(len(full_text) // page_count, 1) if page_count > 0 else len(full_text)
     
     for i, chunk_text in enumerate(chunks):
         logger.info("Generating embedding for chunk %d/%d", i+1, len(chunks))
         embedding = get_embedding(chunk_text)
         
-        chunk_meta = json.dumps({"page_number": 1, "chunk_index": i})
+        # Estimate page number from the chunk's approximate position
+        chunk_start = full_text.find(chunk_text)
+        estimated_page = (chunk_start // chars_per_page) + 1 if chunk_start >= 0 else 1
+        estimated_page = min(estimated_page, page_count)
+        
+        chunk_meta = json.dumps({"page_number": estimated_page, "chunk_index": i})
         cur.execute("""
             INSERT INTO lease_chunks (document_id, text_content, embedding, chunk_metadata)
             VALUES (%s, %s, %s::vector, %s)
