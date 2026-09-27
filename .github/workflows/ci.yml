@@ -49,11 +49,13 @@ jobs:
         run: cd backend && poetry run mypy .
 
       - name: Run Unit Tests
+        # Settings requires these at import time; the unit tests don't connect
+        # to Redis or AWS, so placeholders are enough.
         env:
-          DB_HOST: localhost
-          DB_NAME: leasebuddy_test
-          # Settings requires a secret key; tests only need a placeholder.
+          DATABASE_URL: postgresql+asyncpg://postgres:postgres@localhost:5432/leasebuddy_test
+          REDIS_URL: redis://localhost:6379/0
           API_SECRET_KEY: ci-test-secret
+          AWS_DEFAULT_REGION: us-east-1
         run: cd backend && poetry run pytest tests/unit/ -v
         
   frontend-lint-test:
