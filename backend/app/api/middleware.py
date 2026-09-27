@@ -37,7 +37,12 @@ class SimpleRateLimitMiddleware(BaseHTTPMiddleware):
         self.redis = redis.from_url(settings.REDIS_URL, encoding="utf-8", decode_responses=True)
 
     async def dispatch(self, request: Request, call_next) -> Response:
-        client_ip = request.client.host
+        forwarded_for = request.headers.get("X-Forwarded-For")
+        if forwarded_for:
+            # Take the first IP (the original client) from the comma-separated list
+            client_ip = forwarded_for.split(",")[0].strip()
+        else:
+            client_ip = request.client.host
         now = time.time()
         window_start = now - self.window_seconds
         key = f"rate_limit:{client_ip}"

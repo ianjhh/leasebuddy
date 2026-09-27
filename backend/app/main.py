@@ -8,7 +8,7 @@ from fastapi.middleware.cors import CORSMiddleware
 
 # Import all models so SQLAlchemy knows about them when we call create_all.
 import app.models.lease
-from app.api.middleware import RequestLoggingMiddleware
+from app.api.middleware import RequestLoggingMiddleware, SimpleRateLimitMiddleware
 from app.api.routes import chat, health, upload
 from app.config import settings
 from app.db.session import engine
@@ -46,6 +46,7 @@ app = FastAPI(
 
 # ── Middleware ────────────────────────────────────────────────────────────────
 app.add_middleware(RequestLoggingMiddleware)
+app.add_middleware(SimpleRateLimitMiddleware)
 app.add_middleware(
     CORSMiddleware,
     allow_origins=settings.CORS_ORIGINS,
