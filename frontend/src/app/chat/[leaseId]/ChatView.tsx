@@ -27,7 +27,7 @@ export function ChatView() {
 
   const { messages, isStreaming, isThinking, sendQuery, connectionState } = useChat(leaseId);
   
-  const messagesEndRef = useRef<HTMLDivElement>(null);
+  const logRef = useRef<HTMLDivElement>(null);
   const asked = new Set(messages.filter((m) => m.role === "user").map((m) => m.content));
 
   useEffect(() => {
@@ -46,8 +46,11 @@ export function ChatView() {
     loadLease();
   }, [leaseId]);
 
+  // Keep the newest message in view by scrolling the message list itself.
+  // scrollIntoView would also scroll any page this app is embedded in.
   useEffect(() => {
-    messagesEndRef.current?.scrollIntoView({ behavior: "smooth" });
+    const log = logRef.current;
+    log?.scrollTo({ top: log.scrollHeight, behavior: "smooth" });
   }, [messages, isStreaming]);
 
   if (error) {
@@ -96,7 +99,7 @@ export function ChatView() {
         </div>
       </header>
 
-      <div className="flex-1 overflow-y-auto p-4 sm:p-6 scroll-smooth">
+      <div ref={logRef} className="flex-1 overflow-y-auto p-4 sm:p-6 scroll-smooth">
         <div className="max-w-3xl mx-auto">
           <div className="pb-4">
               {messages.map((msg, index) => (
@@ -117,7 +120,7 @@ export function ChatView() {
                   </div>
                 </div>
               )}
-              <div ref={messagesEndRef} className="h-4" />
+              <div className="h-4" />
             </div>
         </div>
       </div>
