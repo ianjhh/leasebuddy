@@ -18,14 +18,12 @@ export interface ChatMessage {
   role: "user" | "assistant";
   content: string;
   citations?: Citation[];
-  note?: string;
   createdAt: string;
 }
 
-export type WebSocketMessage =
+export type WebSocketMessage = 
   | { type: "token"; content: string }
   | { type: "citations"; data: Citation[] }
-  | { type: "note"; content: string }
   | { type: "done" }
   | { type: "error"; message: string };
 

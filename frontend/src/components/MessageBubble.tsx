@@ -71,10 +71,6 @@ export function MessageBubble({ message, isStreaming }: MessageBubbleProps) {
               </div>
             </div>
           )}
-
-          {message.note && (
-            <p className="mt-3 text-[11px] text-gray-500">{message.note}</p>
-          )}
         </div>
       </div>
     </div>
